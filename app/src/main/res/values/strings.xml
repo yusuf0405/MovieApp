@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyMovieApp</string>
+    <string-array name="categories">
+        <item>Популярные</item>
+        <item>В эфире сегодня</item>
+        <item>Лучшие</item>
+        <item>Предстоящие фильмы</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
