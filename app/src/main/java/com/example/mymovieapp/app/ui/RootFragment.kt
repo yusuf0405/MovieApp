@@ -17,7 +17,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @DelicateCoroutinesApi
 class RootFragment : Fragment() {
-
     //Создаем ViewBinding
     private val binding: FragmentRootBinding by lazy(LazyThreadSafetyMode.NONE) {
         FragmentRootBinding.inflate(layoutInflater)
@@ -45,7 +44,6 @@ class RootFragment : Fragment() {
             when (pos) {
                 0 -> {
                     tab.setIcon(R.drawable.ic_baseline_movie_filter_24)
-
                 }
                 1 -> {
                     tab.setIcon(R.drawable.ic_baseline_person_24)

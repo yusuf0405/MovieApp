@@ -1,7 +1,7 @@
-package com.example.mymovieapp.app_network
+package com.example.mymovieapp.app.network
 
-import com.example.mymovieapp.app_network.movie_network.MovieApi
-import com.example.mymovieapp.app_network.person_network.PersonApi
+import com.example.mymovieapp.app.network.movie_network.MovieApi
+import com.example.mymovieapp.app.network.person_network.PersonApi
 import com.example.mymovieapp.app.utils.Utils.Companion.API_KEY
 import com.example.mymovieapp.app.utils.Utils.Companion.BASE_URL
 import okhttp3.Interceptor
@@ -20,12 +20,10 @@ object RetrofitInstance {
             .newBuilder()
             .addQueryParameter("api_key", API_KEY)
             .build()
-
         val request = chain.request()
             .newBuilder()
             .url(url)
             .build()
-
         return@Interceptor chain.proceed(request)
     }
 

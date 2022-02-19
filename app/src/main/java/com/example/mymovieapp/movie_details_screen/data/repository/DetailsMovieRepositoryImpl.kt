@@ -4,7 +4,7 @@ import com.example.mymovieapp.movie_screen.domain.model.MovieResponse
 import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
 import com.example.mymovieapp.movie_details_screen.domain.model.TrailerResponse
 import com.example.mymovieapp.movie_details_screen.domain.repository.DetailsMovieRepository
-import com.example.mymovieapp.app_network.RetrofitInstance
+import com.example.mymovieapp.app.network.RetrofitInstance
 import retrofit2.Response
 
 class DetailsMovieRepositoryImpl : DetailsMovieRepository {

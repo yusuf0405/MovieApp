@@ -13,9 +13,7 @@ class MoviePageSource(
     private val api: MovieRepository,
     private val responseType: ResponseUser,
     private val query: String,
-
-
-    ) : PagingSource<Int, Movie>() {
+) : PagingSource<Int, Movie>() {
     override fun getRefreshKey(state: PagingState<Int, Movie>): Int? {
         val anchorPosition = state.anchorPosition ?: return null
         val page = state.closestPageToPosition(anchorPosition) ?: return null

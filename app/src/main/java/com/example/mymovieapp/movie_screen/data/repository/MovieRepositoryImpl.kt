@@ -1,8 +1,8 @@
 package com.example.mymovieapp.movie_screen.data.repository
 
+import com.example.mymovieapp.app.network.RetrofitInstance
 import com.example.mymovieapp.movie_screen.domain.model.MovieResponse
 import com.example.mymovieapp.movie_screen.domain.repository.MovieRepository
-import com.example.mymovieapp.app_network.RetrofitInstance
 import retrofit2.Response
 
 class MovieRepositoryImpl : MovieRepository {

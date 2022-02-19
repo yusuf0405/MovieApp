@@ -4,55 +4,38 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.mymovieapp.person_screen.data.sourse.PersonPageSource
 import com.example.mymovieapp.person_screen.domain.model.Person
-import com.example.mymovieapp.person_screen.domain.repository.PersonRepository
+import com.example.mymovieapp.person_screen.domain.model.ResponsePersonType
+import com.example.mymovieapp.person_screen.domain.usecase.GetPagerPersonUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
-enum class ResponsePersonType {
-    PERSON,
-    SEARCH
-
-}
 
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class PersonViewModel @Inject constructor(
-    private val repository: PersonRepository,
+    private val getPagerPersonUseCase: GetPagerPersonUseCase,
 ) : ViewModel() {
+
     private val _responseBy: MutableLiveData<ResponsePersonType> =
         MutableLiveData<ResponsePersonType>()
-    private var query = ""
+    private val _queryBy: MutableLiveData<String> = MutableLiveData<String>()
 
+    init {
+        _queryBy.value = ""
+    }
 
     val personFlow: Flow<PagingData<Person>> by lazy {
         _responseBy.asFlow()
             .flatMapLatest {
-                getPagerMovies(it)
+                getPagerPersonUseCase.exesute(response = it, query = _queryBy.value!!)
             }
             .cachedIn(viewModelScope)
-    }
-
-    private fun getPagerMovies(response: ResponsePersonType): Flow<PagingData<Person>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = 2,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = {
-                PersonPageSource(api = repository,
-                    responseType = response,
-                    query = query)
-            }
-        ).flow
     }
 
     fun responseType(newResponse: ResponsePersonType) {
@@ -60,7 +43,7 @@ class PersonViewModel @Inject constructor(
     }
 
     fun responseSearchType(newQuery: String) {
-        query = newQuery
+        _queryBy.value = newQuery
         _responseBy.value = ResponsePersonType.SEARCH
     }
 

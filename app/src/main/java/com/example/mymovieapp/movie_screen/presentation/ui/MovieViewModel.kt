@@ -4,14 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.mymovieapp.movie_screen.domain.model.Movie
 import com.example.mymovieapp.movie_screen.domain.model.ResponseUser
-import com.example.mymovieapp.movie_screen.domain.repository.MovieRepository
-import com.example.mymovieapp.movie_screen.data.souse.MoviePageSource
+import com.example.mymovieapp.movie_screen.domain.usecase.GetPagerMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,34 +20,24 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class MovieViewModel @Inject constructor(
-    private val repository: MovieRepository,
+    private val getPagerMoviesUseCase: GetPagerMoviesUseCase,
 ) : ViewModel() {
 
 
     private val _responseBy: MutableLiveData<ResponseUser> = MutableLiveData<ResponseUser>()
-    private var query = ""
+    private val _queryBy: MutableLiveData<String> = MutableLiveData<String>()
     var oldResponse: ResponseUser = ResponseUser.POPULAR
+
+    init {
+        _queryBy.value = ""
+    }
 
     val movieFlow: Flow<PagingData<Movie>> by lazy {
         _responseBy.asFlow()
             .flatMapLatest {
-                getPagerMovies(it)
+                getPagerMoviesUseCase.exesute(response = it, query = _queryBy.value!!)
             }
             .cachedIn(viewModelScope)
-    }
-
-    private fun getPagerMovies(response: ResponseUser): Flow<PagingData<Movie>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = 2,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = {
-                MoviePageSource(api = repository,
-                    responseType = response,
-                    query = query)
-            }
-        ).flow
     }
 
     fun responseType(newResponse: ResponseUser) {
@@ -59,7 +46,7 @@ class MovieViewModel @Inject constructor(
     }
 
     fun responseSearchType(newQuery: String) {
-        query = newQuery
+        _queryBy.value = newQuery
         _responseBy.value = ResponseUser.SEARCH
     }
 }
