@@ -1,9 +1,15 @@
 package com.example.mymovieapp.movie_details_screen.presentation.ui
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mymovieapp.app.toFavoriteMovies
+import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
+import com.example.mymovieapp.favorite_screen.domain.usecase.AddMovieFavoriteUseCase
+import com.example.mymovieapp.favorite_screen.domain.usecase.AllFavoriteMoviesUseCase
+import com.example.mymovieapp.favorite_screen.domain.usecase.DeleteMovieFavoriteUseCase
 import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
 import com.example.mymovieapp.movie_details_screen.domain.model.TrailerResponse
 import com.example.mymovieapp.movie_details_screen.domain.usecase.GetMovieDetailsUseCase
@@ -20,16 +26,18 @@ class DetailsMovieViewModel @Inject constructor(
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
     private val getMovieTrailerUseCase: GetMovieTrailerUseCase,
     private val getSimilarMovieUseCase: GetSimilarMovieUseCase,
+    private val addMovieFavoriteUseCase: AddMovieFavoriteUseCase,
+    private val deleteMovieFavoriteUseCase: DeleteMovieFavoriteUseCase,
+    private val allFavoriteMoviesUseCase: AllFavoriteMoviesUseCase,
 ) : ViewModel() {
 
-    private var _movieOfList: MutableLiveData<Response<MovieDetails>> = MutableLiveData()
+    private val _movieOfList: MutableLiveData<Response<MovieDetails>> = MutableLiveData()
     val movieOfList: LiveData<Response<MovieDetails>> = _movieOfList
 
-    private var _movieListTrailerResponse: MutableLiveData<Response<TrailerResponse>> =
-        MutableLiveData()
-    val movieListTrailerResponse: LiveData<Response<TrailerResponse>> = _movieListTrailerResponse
+    private val _trailerResponse: MutableLiveData<Response<TrailerResponse>> = MutableLiveData()
+    val trailerResponse: LiveData<Response<TrailerResponse>> = _trailerResponse
 
-    private var _movieSimilarResponse: MutableLiveData<Response<MovieResponse>> = MutableLiveData()
+    private val _movieSimilarResponse: MutableLiveData<Response<MovieResponse>> = MutableLiveData()
     val movieSimilarResponse: LiveData<Response<MovieResponse>> = _movieSimilarResponse
 
 
@@ -41,7 +49,7 @@ class DetailsMovieViewModel @Inject constructor(
 
     fun getMovieTrailer(id: Int) {
         viewModelScope.launch {
-            _movieListTrailerResponse.value = getMovieTrailerUseCase.exesute(id = id)
+            _trailerResponse.value = getMovieTrailerUseCase.exesute(id = id)
         }
     }
 
@@ -49,5 +57,26 @@ class DetailsMovieViewModel @Inject constructor(
         viewModelScope.launch {
             _movieSimilarResponse.value = getSimilarMovieUseCase.exesute(id = id)
         }
+    }
+
+    fun addMovieFavorite(movie: MovieDetails) {
+        val favoriteMovie = movie.toFavoriteMovies()
+        viewModelScope.launch {
+            addMovieFavoriteUseCase.execute(movie = favoriteMovie)
+        }
+    }
+
+    fun deleteMovieFavorite(movie: MovieDetails) {
+        val favoriteMovie = movie.toFavoriteMovies()
+        viewModelScope.launch {
+            deleteMovieFavoriteUseCase.execute(movie = favoriteMovie)
+        }
+    }
+
+    suspend fun allFavoriteMovies(): List<FavoriteMovie> {
+        Log.i("SIZE", allFavoriteMoviesUseCase.execute().size.toString())
+        return allFavoriteMoviesUseCase.execute()
+
+
     }
 }

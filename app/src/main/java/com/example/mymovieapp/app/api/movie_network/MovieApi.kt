@@ -1,4 +1,4 @@
-package com.example.mymovieapp.app.network.movie_network
+package com.example.mymovieapp.app.api.movie_network
 
 import androidx.annotation.IntRange
 import com.example.mymovieapp.app.utils.Utils.Companion.DEFAULT_PAGE_SIZE

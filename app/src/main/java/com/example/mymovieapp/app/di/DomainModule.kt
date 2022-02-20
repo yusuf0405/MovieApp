@@ -19,7 +19,7 @@ import dagger.hilt.android.components.ViewModelComponent
 @Module
 @InstallIn(ViewModelComponent::class)
 class DomainModule {
-    // <!--  Movie Details Screen UseCase   -->
+    // <!--  Movie Details Screen UseCases   -->
     @Provides
     fun provideGetMovieDetailsUseCase(repository: DetailsMovieRepository): GetMovieDetailsUseCase =
         GetMovieDetailsUseCase(repository = repository)
@@ -33,9 +33,9 @@ class DomainModule {
         GetSimilarMovieUseCase(repository = repository)
 
 
-    // <!--  Person Details Screen UseCase   -->
+    // <!--  Person Details Screen UseCases   -->
     @Provides
-    fun provideGetPersonDetailsUseCase(repository: DetailsPersonRepository): GetPersonDetailsUseCase =
+    fun     provideGetPersonDetailsUseCase(repository: DetailsPersonRepository): GetPersonDetailsUseCase =
         GetPersonDetailsUseCase(repository = repository)
 
     @Provides

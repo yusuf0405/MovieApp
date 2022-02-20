@@ -1,8 +1,10 @@
 package com.example.mymovieapp.movie_screen.presentation.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,13 +18,15 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mymovieapp.R
-import com.example.mymovieapp.app.utils.Utils.Companion.MOVIE_ID_KEY
 import com.example.mymovieapp.app.movie.ItemOnClickListener
 import com.example.mymovieapp.app.movie.MovieAdapter
+import com.example.mymovieapp.app.utils.Utils.Companion.FAVORITE_MOVIE_ID_KEY
+import com.example.mymovieapp.app.utils.Utils.Companion.MOVIE_ID_KEY
 import com.example.mymovieapp.databinding.MovieFragmentBinding
+import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
+import com.example.mymovieapp.movie_details_screen.presentation.ui.DetailsMovieActivity
 import com.example.mymovieapp.movie_screen.domain.model.ResponseUser
 import com.example.mymovieapp.movie_screen.presentation.adapter.MovieLoaderStateAdapter
-import com.example.mymovieapp.movie_details_screen.presentation.ui.DetailsMovieActivity
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -40,15 +44,11 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
     SwipeRefreshLayout.OnRefreshListener {
 
 
-
-
     private val viewModel: MovieViewModel by viewModels()
 
     private val binding: MovieFragmentBinding by lazy(LazyThreadSafetyMode.NONE) {
         MovieFragmentBinding.inflate(layoutInflater)
     }
-
-
     private val adapter = MovieAdapter(object : ItemOnClickListener {
         override fun showDetailsMovie(id: Int) {
             val intent = Intent(requireContext(), DetailsMovieActivity::class.java)
@@ -57,18 +57,12 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
         }
     })
 
-//    override fun onAttach(context: Context) {
-//
-//        super.onAttach(context)
-//        viewModel.responseType(ResponseUser.POPULAR)
-//
-//    }
-
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        Log.i("Josepha", "Joseph")
 
         val arrayAdapter = ArrayAdapter.createFromResource(requireContext(),
             R.array.categories,
@@ -82,6 +76,8 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
             R.color.red)
         binding.spinnerCategories.adapter = arrayAdapter
         binding.spinnerCategories.onItemSelectedListener = this
+
+
 
         GlobalScope.launch(Dispatchers.Main) {
             viewModel.movieFlow.collectLatest(adapter::submitData)
@@ -106,6 +102,11 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
         }
 
         var oldResponse: ResponseUser? = null
+
+        binding.serchMovie.setOnCloseListener {
+            viewModel.responseType(oldResponse!!)
+            false
+        }
         binding.serchMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(searchText: String?): Boolean {
                 if (searchText != null) {
@@ -126,8 +127,6 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
                 } else {
                     binding.spinnerCategories.visibility = View.VISIBLE
                     if (oldResponse != null) viewModel.responseType(oldResponse!!)
-
-
                 }
                 return false
             }
@@ -163,6 +162,13 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
         binding.swiperefresh.postDelayed({
             binding.swiperefresh.isRefreshing = false
         }, 500)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.i("Josepha", "Joseph")
+        outState.get("Joseph")
+        outState.getBinder("ddd")
     }
 
 

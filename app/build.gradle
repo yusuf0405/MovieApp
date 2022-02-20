@@ -3,8 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-
-
 }
 
 android {
@@ -56,12 +54,18 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 
+    // Room
+    implementation 'androidx.room:room-ktx:2.4.1'
+    kapt "androidx.room:room-compiler:2.4.1"
+
     //Paging
     implementation "androidx.paging:paging-runtime:3.1.0"
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
+    //Bottom Navigation
+    implementation 'com.github.simformsolutions:SSCustomBottomNavigation:3.2'
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
@@ -76,7 +80,10 @@ dependencies {
     // Livedata and viewModel
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-alpha02"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
-    
+
+    // viewpager2
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
     //AndroidX
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

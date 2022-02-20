@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_begin="249dp" />
+                    app:layout_constraintGuide_percent="0.5" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline7"
@@ -250,6 +250,15 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/biography_text" />
+
+                <ImageView
+                    android:id="@+id/tv_favorite_person"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_favorite_border_24"
+                    app:layout_constraintBottom_toTopOf="@+id/name_details_person"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <RelativeLayout

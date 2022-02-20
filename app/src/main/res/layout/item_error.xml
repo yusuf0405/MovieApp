@@ -4,7 +4,7 @@
     android:id="@+id/error_message"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
+    android:gravity="end"
     android:minHeight="56dp"
     android:padding="4dp"
     android:textAllCaps="true"

@@ -8,5 +8,5 @@ data class MovieCredits(
     @SerializedName("crew")
     var crew: List<Movie>,
     @SerializedName("id")
-    var id: Int
+    var id: Int,
 )

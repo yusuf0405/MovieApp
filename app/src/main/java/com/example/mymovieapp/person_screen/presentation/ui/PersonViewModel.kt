@@ -22,8 +22,7 @@ class PersonViewModel @Inject constructor(
     private val getPagerPersonUseCase: GetPagerPersonUseCase,
 ) : ViewModel() {
 
-    private val _responseBy: MutableLiveData<ResponsePersonType> =
-        MutableLiveData<ResponsePersonType>()
+    private val _responseBy: MutableLiveData<ResponsePersonType> = MutableLiveData<ResponsePersonType>()
     private val _queryBy: MutableLiveData<String> = MutableLiveData<String>()
 
     init {

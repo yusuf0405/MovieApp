@@ -47,6 +47,13 @@
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
 
+                <ImageView
+                    android:id="@+id/favorite_btn"
+                    android:layout_gravity="end"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
+
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>

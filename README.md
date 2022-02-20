@@ -14,13 +14,16 @@
 + Библиотеки которые были использовании в написании кода
 	+ Retrofit2 and okhttp3 Client
 	+ Kotlin Coroutines
+	+ Room
 	+ Paging 2
 	+ Picasso
 	+ Glide
 	+ Android Jetpack Navigation
 	+ Livedata and viewModel
+	+ Viewpager2
+	+ SSCustomBottomNavigation(GitHub)
 	+ Circular-Progress(GitHub)
-	+ Youtube player(GitHub) 
+	+ Youtube player(GitHub)
 + Внедрение зависимостей с помощью Hilt
 
 

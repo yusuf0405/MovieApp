@@ -6,16 +6,12 @@ import com.google.gson.annotations.SerializedName
 data class PersonDetails(
     @SerializedName("adult")
     var adult: Boolean,
-    @SerializedName("also_known_as")
-    var alsoKnownAs: List<String>,
     @SerializedName("biography")
     var biography: String,
     @SerializedName("birthday")
     var birthday: String,
     @SerializedName("gender")
     var gender: Int,
-    @SerializedName("homepage")
-    var homepage: Any,
     @SerializedName("id")
     var id: Int,
     @SerializedName("imdb_id")

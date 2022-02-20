@@ -46,6 +46,7 @@ class PersonFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     })
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -79,6 +80,14 @@ class PersonFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                     Snackbar.LENGTH_LONG).show()
             }
         }
+
+        binding.serchPerson.setOnCloseListener(object : SearchView.OnCloseListener {
+            override fun onClose(): Boolean {
+                viewModel.responseType(ResponsePersonType.PERSON)
+                return false
+            }
+
+        })
 
         binding.serchPerson.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(searchText: String?): Boolean {

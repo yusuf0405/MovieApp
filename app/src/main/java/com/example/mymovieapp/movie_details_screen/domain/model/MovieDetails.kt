@@ -1,6 +1,7 @@
 package com.example.mymovieapp.movie_details_screen.domain.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class MovieDetails(
 
@@ -26,4 +27,4 @@ data class MovieDetails(
     val video: Boolean,
     @SerializedName("vote_average")
     val rating: Double,
-)
+) : Serializable

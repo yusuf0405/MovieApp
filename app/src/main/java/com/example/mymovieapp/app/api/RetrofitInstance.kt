@@ -1,7 +1,7 @@
-package com.example.mymovieapp.app.network
+package com.example.mymovieapp.app.api
 
-import com.example.mymovieapp.app.network.movie_network.MovieApi
-import com.example.mymovieapp.app.network.person_network.PersonApi
+import com.example.mymovieapp.app.api.movie_network.MovieApi
+import com.example.mymovieapp.app.api.person_network.PersonApi
 import com.example.mymovieapp.app.utils.Utils.Companion.API_KEY
 import com.example.mymovieapp.app.utils.Utils.Companion.BASE_URL
 import okhttp3.Interceptor

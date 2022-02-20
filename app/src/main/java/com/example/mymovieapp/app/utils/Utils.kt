@@ -9,5 +9,6 @@ class Utils {
         const val DEFAULT_PAGE_SIZE = 1
         const val MOVIE_ID_KEY = "MOVIE_ID_KEY"
         const val PERSON_ID_KEY = "PERSON_ID_KEY"
+        const val FAVORITE_MOVIE_ID_KEY = "FAVORITE_MOVIE_ID_KEY"
     }
 }
