@@ -13,18 +13,24 @@
         android:roundIcon="@drawable/ic_baseline_movie_filter_24"
         android:supportsRtl="true">
         <activity
-            android:name=".app.ui.MainActivity"
+            android:name=".person_details_screen.presentation.ui.DetailsPersonActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".app.MainActivity" />
+        <activity
+            android:name=".app.MainActivity"
             android:exported="true"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".movie_details_screen.presentation.ui.DetailsMovieActivity"
             android:exported="true"
-            android:parentActivityName=".app.ui.MainActivity"
+            android:parentActivityName=".app.MainActivity"
             android:theme="@style/MyTheme" />
     </application>
 

@@ -6,22 +6,16 @@ import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.mymovieapp.favorite_screen.domain.usecase.AddMovieFavoriteUseCase
-import com.example.mymovieapp.favorite_screen.domain.usecase.AllFavoriteMoviesUseCase
-import com.example.mymovieapp.favorite_screen.domain.usecase.DeleteMovieFavoriteUseCase
 import com.example.mymovieapp.movie_screen.domain.model.Movie
 import com.example.mymovieapp.movie_screen.domain.model.ResponseUser
 import com.example.mymovieapp.movie_screen.domain.usecase.GetPagerMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
-@FlowPreview
 @DelicateCoroutinesApi
 @ExperimentalCoroutinesApi
 @HiltViewModel

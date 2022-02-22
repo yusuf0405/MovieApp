@@ -1,19 +1,19 @@
 package com.example.mymovieapp.person_screen.presentation.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.mymovieapp.person_details_screen.presentation.ui.DetailsPersonActivity
 import com.example.mymovieapp.R
-import com.example.mymovieapp.app.adapter.PersonAdapter
-import com.example.mymovieapp.app.adapter.PersonItemOnClickListener
+import com.example.mymovieapp.person_screen.presentation.adapter.PersonAdapter
+import com.example.mymovieapp.person_screen.presentation.adapter.PersonItemOnClickListener
 import com.example.mymovieapp.app.utils.Utils.Companion.PERSON_ID_KEY
 import com.example.mymovieapp.databinding.PersonFragmentBinding
 import com.example.mymovieapp.movie_screen.presentation.adapter.MovieLoaderStateAdapter
@@ -36,10 +36,10 @@ class PersonFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     private val viewModel: PersonViewModel by viewModels()
 
     private val adapter = PersonAdapter(object : PersonItemOnClickListener {
-
         override fun showDetailsPerson(id: Int) {
-            findNavController().navigate(R.id.detailsPersonFragment,
-                bundleOf(PERSON_ID_KEY to id))
+            val intent = Intent(requireContext(), DetailsPersonActivity::class.java)
+            intent.putExtra(PERSON_ID_KEY, id)
+            requireContext().startActivity(intent)
         }
 
     })
@@ -82,16 +82,6 @@ class PersonFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
                     Snackbar.LENGTH_LONG).show()
             }
         }
-
-//        binding.serchPerson.setOnCloseListener(object : SearchView.OnCloseListener {
-//            override fun onClose(): Boolean {
-//                viewModel.responseType(ResponsePersonType.PERSON)
-//                return false
-//            }
-//
-//        })
-
-
         return binding.root
     }
 

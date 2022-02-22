@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mymovieapp.R
-import com.example.mymovieapp.app.adapter.TrailerAdapter
+import com.example.mymovieapp.movie_details_screen.presentation.adapter.TrailerAdapter
 import com.example.mymovieapp.movie_screen.presentation.adapter.ItemOnClickListener
 import com.example.mymovieapp.app.utils.Utils.Companion.MOVIE_ID_KEY
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
@@ -48,6 +48,7 @@ class DetailsMovieActivity : AppCompatActivity() {
         setContentView(binding.root)
         recyclerBind()
         val id = intent.extras?.get(MOVIE_ID_KEY) as Int
+
         GlobalScope.launch(Dispatchers.Main) {
             favoriteMovies = viewModel.allFavoriteMovies()
             viewModel.getMovieDetails(id = id)
@@ -55,10 +56,7 @@ class DetailsMovieActivity : AppCompatActivity() {
             viewModel.getSimilarMovie(id = id)
             uiVisibility(false)
 
-
         }
-
-
         viewModel.movieOfList.observe(this) {
             movie = it.body()!!
             bindUI(movie = movie!!, favoriteMovies!!)
@@ -135,10 +133,14 @@ class DetailsMovieActivity : AppCompatActivity() {
         if (!visible) {
             binding.viewConstraint.visibility = View.GONE
             binding.favoriteBtn.visibility = View.GONE
+            binding.similarRecyclerView.visibility= View.GONE
+            binding.videoRecyclerView.visibility= View.GONE
             binding.progressDialog.visibility = View.VISIBLE
         } else {
             binding.viewConstraint.visibility = View.VISIBLE
             binding.favoriteBtn.visibility = View.VISIBLE
+            binding.similarRecyclerView.visibility= View.VISIBLE
+            binding.videoRecyclerView.visibility= View.VISIBLE
             binding.progressDialog.visibility = View.GONE
         }
 

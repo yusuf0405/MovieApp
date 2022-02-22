@@ -22,11 +22,7 @@ interface ItemOnClickListener {
 @DelicateCoroutinesApi
 class MovieAdapter @Inject constructor(
     private val actionListener: ItemOnClickListener,
-) :
-
-
-    PagingDataAdapter<Movie, MovieAdapter.HomeNewsViewHolder>(MovieDiffItemCallback) {
-
+) : PagingDataAdapter<Movie, MovieAdapter.HomeNewsViewHolder>(MovieDiffItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeNewsViewHolder {
         val inflater =

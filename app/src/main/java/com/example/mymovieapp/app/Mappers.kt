@@ -15,17 +15,6 @@ internal fun MovieDetails.toFavoriteMovies(): FavoriteMovie {
         rating = rating,
     )
 }
-
-internal fun Movie.toFavoriteMovies(): FavoriteMovie {
-    return FavoriteMovie(
-        id = id,
-        posterPath = posterPath,
-        releaseDate = releaseDate,
-        title = title,
-        rating = rating,
-    )
-}
-
 internal fun PersonDetails.toFavoritePerson(): FavoritePerson {
     return FavoritePerson(
         adult = adult,

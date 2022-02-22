@@ -1,4 +1,4 @@
-package com.example.mymovieapp.app.api.person_network
+package com.example.mymovieapp.app.api
 
 import androidx.annotation.IntRange
 import com.example.mymovieapp.person_screen.domain.model.PersonResponse

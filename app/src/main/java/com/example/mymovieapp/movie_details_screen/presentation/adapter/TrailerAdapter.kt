@@ -1,4 +1,4 @@
-package com.example.mymovieapp.app.adapter
+package com.example.mymovieapp.movie_details_screen.presentation.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

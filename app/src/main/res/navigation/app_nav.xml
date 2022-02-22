@@ -14,16 +14,7 @@
         android:id="@+id/navigation_person"
         android:name="com.example.mymovieapp.person_screen.presentation.ui.PersonFragment"
         android:label="Person"
-        tools:layout="@layout/person_fragment" >
-        <action
-            android:id="@+id/action_personFragment_to_detailsPersonFragment"
-            app:destination="@id/detailsPersonFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailsPersonFragment"
-        android:name="com.example.mymovieapp.person_details_screen.presentation.ui.DetailsPersonFragment"
-        android:label="details_person_fragment"
-        tools:layout="@layout/details_person_fragment" />
+        tools:layout="@layout/person_fragment" />
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.example.mymovieapp.favorite_screen.presentation.ui.FavoriteFragment"

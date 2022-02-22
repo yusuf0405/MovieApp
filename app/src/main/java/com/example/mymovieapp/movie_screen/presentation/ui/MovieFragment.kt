@@ -97,13 +97,6 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
                     Snackbar.LENGTH_LONG).show()
             }
         }
-
-
-//        binding.serchMovie.setOnCloseListener {
-//            viewModel.responseType(oldResponse!!)
-//            false
-//        }
-
         return binding.root
     }
 
