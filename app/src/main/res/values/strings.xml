@@ -17,4 +17,5 @@
     <string name="title_person">Person</string>
     <string name="title_favorite">Favorite</string>
     <string name="empty_value"></string>
+    <string name="title_activity_bottom">BottomActivity</string>
 </resources>

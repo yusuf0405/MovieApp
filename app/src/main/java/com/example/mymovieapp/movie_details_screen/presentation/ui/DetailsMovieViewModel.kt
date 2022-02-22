@@ -1,6 +1,5 @@
 package com.example.mymovieapp.movie_details_screen.presentation.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -74,7 +73,6 @@ class DetailsMovieViewModel @Inject constructor(
     }
 
     suspend fun allFavoriteMovies(): List<FavoriteMovie> {
-        Log.i("SIZE", allFavoriteMoviesUseCase.execute().size.toString())
         return allFavoriteMoviesUseCase.execute()
 
 

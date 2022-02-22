@@ -1,6 +1,5 @@
 package com.example.mymovieapp.favorite_screen.presentation.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +46,6 @@ class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     })
 
-    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -55,7 +53,7 @@ class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener {
         val arrayAdapter = ArrayAdapter.createFromResource(requireContext(),
             R.array.favorite,
             android.R.layout.simple_spinner_item)
-        arrayAdapter.setDropDownViewResource(R.xml.spinner_item)
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_custom_item)
         movieAdapter.favoriteMovieList
         binding.favSpinner.adapter = arrayAdapter
         binding.favSpinner.onItemSelectedListener = this

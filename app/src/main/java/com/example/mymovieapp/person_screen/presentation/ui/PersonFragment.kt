@@ -1,10 +1,8 @@
 package com.example.mymovieapp.person_screen.presentation.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.SearchView
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -46,6 +44,10 @@ class PersonFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     })
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,15 +83,32 @@ class PersonFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             }
         }
 
-        binding.serchPerson.setOnCloseListener(object : SearchView.OnCloseListener {
-            override fun onClose(): Boolean {
-                viewModel.responseType(ResponsePersonType.PERSON)
-                return false
-            }
+//        binding.serchPerson.setOnCloseListener(object : SearchView.OnCloseListener {
+//            override fun onClose(): Boolean {
+//                viewModel.responseType(ResponsePersonType.PERSON)
+//                return false
+//            }
+//
+//        })
 
-        })
 
-        binding.serchPerson.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        return binding.root
+    }
+
+    override fun onRefresh() {
+        viewModel.responseType(ResponsePersonType.PERSON)
+        binding.swiperefresh.isRefreshing = true
+        binding.swiperefresh.postDelayed({
+            binding.swiperefresh.isRefreshing = false
+        }, 500)
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_item, menu)
+        val item = menu.findItem(R.id.search_action)
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(searchText: String?): Boolean {
                 if (searchText != null) {
                     viewModel.responseSearchType(searchText)
@@ -109,15 +128,7 @@ class PersonFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             }
 
         })
-        return binding.root
-    }
-
-    override fun onRefresh() {
-        viewModel.responseType(ResponsePersonType.PERSON)
-        binding.swiperefresh.isRefreshing = true
-        binding.swiperefresh.postDelayed({
-            binding.swiperefresh.isRefreshing = false
-        }, 500)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }
 

@@ -1,16 +1,11 @@
 package com.example.mymovieapp.movie_screen.presentation.ui
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,14 +13,12 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.mymovieapp.R
-import com.example.mymovieapp.app.movie.ItemOnClickListener
-import com.example.mymovieapp.app.movie.MovieAdapter
-import com.example.mymovieapp.app.utils.Utils.Companion.FAVORITE_MOVIE_ID_KEY
 import com.example.mymovieapp.app.utils.Utils.Companion.MOVIE_ID_KEY
 import com.example.mymovieapp.databinding.MovieFragmentBinding
-import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
 import com.example.mymovieapp.movie_details_screen.presentation.ui.DetailsMovieActivity
 import com.example.mymovieapp.movie_screen.domain.model.ResponseUser
+import com.example.mymovieapp.movie_screen.presentation.adapter.ItemOnClickListener
+import com.example.mymovieapp.movie_screen.presentation.adapter.MovieAdapter
 import com.example.mymovieapp.movie_screen.presentation.adapter.MovieLoaderStateAdapter
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,31 +36,35 @@ import java.util.*
 class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
     SwipeRefreshLayout.OnRefreshListener {
 
-
     private val viewModel: MovieViewModel by viewModels()
 
     private val binding: MovieFragmentBinding by lazy(LazyThreadSafetyMode.NONE) {
         MovieFragmentBinding.inflate(layoutInflater)
     }
-    private val adapter = MovieAdapter(object : ItemOnClickListener {
-        override fun showDetailsMovie(id: Int) {
-            val intent = Intent(requireContext(), DetailsMovieActivity::class.java)
-            intent.putExtra(MOVIE_ID_KEY, id)
-            requireContext().startActivity(intent)
-        }
-    })
+    private val adapter = MovieAdapter(
+        actionListener = object : ItemOnClickListener {
+            override fun showDetailsMovie(id: Int) {
+                val intent = Intent(requireContext(), DetailsMovieActivity::class.java)
+                intent.putExtra(MOVIE_ID_KEY, id)
+                requireContext().startActivity(intent)
 
-    @SuppressLint("ResourceType")
+            }
+        }
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        Log.i("Josepha", "Joseph")
-
         val arrayAdapter = ArrayAdapter.createFromResource(requireContext(),
             R.array.categories,
             android.R.layout.simple_spinner_item)
-        arrayAdapter.setDropDownViewResource(R.xml.spinner_item)
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_custom_item)
         binding.swiperefresh.setOnRefreshListener(this)
         binding.swiperefresh.setColorSchemeResources(
             R.color.red,
@@ -101,41 +98,21 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
             }
         }
 
-        var oldResponse: ResponseUser? = null
 
-        binding.serchMovie.setOnCloseListener {
-            viewModel.responseType(oldResponse!!)
-            false
-        }
-        binding.serchMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(searchText: String?): Boolean {
-                if (searchText != null) {
-                    oldResponse = viewModel.oldResponse
-                    binding.spinnerCategories.visibility = View.GONE
-                    viewModel.responseSearchType(searchText)
-                }
-                return false
+//        binding.serchMovie.setOnCloseListener {
+//            viewModel.responseType(oldResponse!!)
+//            false
+//        }
 
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                val searchText = newText!!.lowercase(Locale.getDefault())
-                if (searchText.isNotEmpty()) {
-                    oldResponse = viewModel.oldResponse
-                    binding.spinnerCategories.visibility = View.GONE
-                    viewModel.responseSearchType(searchText)
-                } else {
-                    binding.spinnerCategories.visibility = View.VISIBLE
-                    if (oldResponse != null) viewModel.responseType(oldResponse!!)
-                }
-                return false
-            }
-
-        })
         return binding.root
     }
 
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+    override fun onItemSelected(
+        p0: AdapterView<*>?,
+        p1: View?,
+        position: Int,
+        p3: Long,
+    ) {
         when (position) {
             0 -> {
                 viewModel.responseType(ResponseUser.POPULAR)
@@ -164,12 +141,36 @@ class MovieFragment : Fragment(), AdapterView.OnItemSelectedListener,
         }, 500)
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.i("Josepha", "Joseph")
-        outState.get("Joseph")
-        outState.getBinder("ddd")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_item, menu)
+        val item = menu.findItem(R.id.search_action)
+        var oldResponse: ResponseUser? = null
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(searchText: String?): Boolean {
+                if (searchText != null) {
+                    oldResponse = viewModel.oldResponse
+                    binding.spinnerCategories.visibility = View.GONE
+                    viewModel.responseSearchType(searchText)
+                }
+                return false
+
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val searchText = newText!!.lowercase(Locale.getDefault())
+                if (searchText.isNotEmpty()) {
+                    oldResponse = viewModel.oldResponse
+                    binding.spinnerCategories.visibility = View.GONE
+                    viewModel.responseSearchType(searchText)
+                } else {
+                    binding.spinnerCategories.visibility = View.VISIBLE
+                    if (oldResponse != null) viewModel.responseType(oldResponse!!)
+                }
+                return false
+            }
+
+        })
+        super.onCreateOptionsMenu(menu, inflater)
     }
-
-
 }

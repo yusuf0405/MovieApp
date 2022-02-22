@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mymovieapp.R
 import com.example.mymovieapp.app.adapter.TrailerAdapter
-import com.example.mymovieapp.app.movie.ItemOnClickListener
+import com.example.mymovieapp.movie_screen.presentation.adapter.ItemOnClickListener
 import com.example.mymovieapp.app.utils.Utils.Companion.MOVIE_ID_KEY
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
 import com.example.mymovieapp.databinding.ActivityMovieDetailsBinding

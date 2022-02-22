@@ -11,18 +11,22 @@ import com.example.mymovieapp.person_screen.domain.model.ResponsePersonType
 import com.example.mymovieapp.person_screen.domain.usecase.GetPagerPersonUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
 
+@FlowPreview
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class PersonViewModel @Inject constructor(
     private val getPagerPersonUseCase: GetPagerPersonUseCase,
 ) : ViewModel() {
 
-    private val _responseBy: MutableLiveData<ResponsePersonType> = MutableLiveData<ResponsePersonType>()
+    private val _responseBy: MutableLiveData<ResponsePersonType> =
+        MutableLiveData<ResponsePersonType>()
     private val _queryBy: MutableLiveData<String> = MutableLiveData<String>()
 
     init {
@@ -31,6 +35,7 @@ class PersonViewModel @Inject constructor(
 
     val personFlow: Flow<PagingData<Person>> by lazy {
         _responseBy.asFlow()
+            .debounce(500)
             .flatMapLatest {
                 getPagerPersonUseCase.exesute(response = it, query = _queryBy.value!!)
             }

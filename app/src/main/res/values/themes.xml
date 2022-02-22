@@ -14,20 +14,25 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="itemIconTint">@color/item_color</item>
+        <item name="itemTextColor"> @color/item_color</item>
 
     </style>
 
-    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MyTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="itemIconTint">@color/item_color</item>
+        <item name="itemTextColor"> @color/item_color</item>
+
     </style>
 </resources>

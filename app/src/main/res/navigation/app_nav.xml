@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/movieFragment">
+    app:startDestination="@id/navigation_movie">
 
     <fragment
-        android:id="@+id/movieFragment"
+        android:id="@+id/navigation_movie"
         android:name="com.example.mymovieapp.movie_screen.presentation.ui.MovieFragment"
-        android:label="popular_movie_fragment"
+        android:label="Movie"
         tools:layout="@layout/movie_fragment" />
     <fragment
-        android:id="@+id/personFragment"
+        android:id="@+id/navigation_person"
         android:name="com.example.mymovieapp.person_screen.presentation.ui.PersonFragment"
-        android:label="person_fragment"
+        android:label="Person"
         tools:layout="@layout/person_fragment" >
         <action
             android:id="@+id/action_personFragment_to_detailsPersonFragment"
@@ -25,18 +25,8 @@
         android:label="details_person_fragment"
         tools:layout="@layout/details_person_fragment" />
     <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.example.mymovieapp.favorite_screen.presentation.FavoriteRootFragment"
-        android:label="favorite_fragment"
-        tools:layout="@layout/favorite_root_fragment" />
-    <fragment
-        android:id="@+id/favoriteMovieFragment"
+        android:id="@+id/navigation_favorite"
         android:name="com.example.mymovieapp.favorite_screen.presentation.ui.FavoriteFragment"
-        android:label="favorite_movie_fragment"
+        android:label="Favorite"
         tools:layout="@layout/favorite_movie_fragment" />
-    <fragment
-        android:id="@+id/favoritePersonFragment"
-        android:name="com.example.mymovieapp.favorite_screen.presentation.ui.FavoritePersonFragment"
-        android:label="favorite_person_fragment"
-        tools:layout="@layout/favorite_person_fragment" />
 </navigation>

@@ -1,22 +1,30 @@
-package com.example.mymovieapp.app.movie
+package com.example.mymovieapp.movie_screen.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
-import com.example.mymovieapp.databinding.MovieItemBinding
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
+import com.example.mymovieapp.databinding.MovieItemBinding
 import com.example.mymovieapp.movie_screen.domain.model.Movie
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.DelicateCoroutinesApi
+import javax.inject.Inject
 
 
 interface ItemOnClickListener {
     fun showDetailsMovie(id: Int)
 }
 
-class MovieAdapter(private val actionListener: ItemOnClickListener) :
+@DelicateCoroutinesApi
+class MovieAdapter @Inject constructor(
+    private val actionListener: ItemOnClickListener,
+) :
+
+
     PagingDataAdapter<Movie, MovieAdapter.HomeNewsViewHolder>(MovieDiffItemCallback) {
 
 
@@ -31,8 +39,10 @@ class MovieAdapter(private val actionListener: ItemOnClickListener) :
         getItem(position)?.let { holder.bind(it) }
     }
 
+    @DelicateCoroutinesApi
     inner class HomeNewsViewHolder(private val binding: MovieItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(movie: Movie) {
             val rating = movie.rating * 10
             binding.apply {
@@ -43,7 +53,6 @@ class MovieAdapter(private val actionListener: ItemOnClickListener) :
                     .load(moviePosterURL)
                     .resize(200, 200)
                     .into(cvIvMoviePoster)
-
                 progressView.setProgress(rating.toInt())
                 when {
                     rating >= 70 -> {
@@ -60,6 +69,7 @@ class MovieAdapter(private val actionListener: ItemOnClickListener) :
             itemView.setOnClickListener {
                 actionListener.showDetailsMovie(id = movie.id)
             }
+
         }
     }
 }

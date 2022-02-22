@@ -42,7 +42,10 @@ class DataModule {
     @Singleton
     fun provideDetailsPersonRepository(): DetailsPersonRepository = DetailsPersonRepositoryImpl()
 
-    @Singleton // Tell Dagger-Hilt to create a singleton accessible everywhere in ApplicationComponent (i.e. everywhere in the application)
+
+
+    // <!-- Favorite Movie Room DB and Dao class create   -->
+    @Singleton
     @Provides
     fun provideFavoriteMoviesDB(
         @ApplicationContext app: Context,
@@ -50,14 +53,15 @@ class DataModule {
         app,
         FavoriteMoviesDB::class.java,
         "favorite_movies"
-    ).build() // The reason we can construct a database for the repo
+    ).build()
 
     @Singleton
     @Provides
     fun provideMoviesDao(db: FavoriteMoviesDB) =
-        db.moviesDao() // The reason we can implement a Dao for the database
+        db.moviesDao()
 
-    @Singleton // Tell Dagger-Hilt to create a singleton accessible everywhere in ApplicationComponent (i.e. everywhere in the application)
+    // <!-- Favorite Person Room DB and Dao class create   -->
+    @Singleton
     @Provides
     fun provideFavoritePersonsDB(
         @ApplicationContext app: Context,
@@ -65,12 +69,11 @@ class DataModule {
         app,
         FavoritePersonsDB::class.java,
         "favorite_persons"
-    ).build() // The reason we can construct a database for the repo
+    ).build()
 
     @Singleton
     @Provides
     fun providePersonsDao(db: FavoritePersonsDB) =
         db.personsDao()
-// The reason we can implement a Dao for the database
 
 }

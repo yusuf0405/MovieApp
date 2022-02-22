@@ -10,7 +10,6 @@ data class FavoritePerson(
     var biography: String,
     var birthday: String,
     var gender: Int,
-    var imdbId: String,
     var knownForDepartment: String,
     var name: String,
     var placeOfBirth: String,
