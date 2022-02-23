@@ -3,9 +3,9 @@ package com.example.mymovieapp.person_screen.domain.usecase
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.mymovieapp.person_screen.data.sourse.PersonPageSource
-import com.example.mymovieapp.person_screen.domain.model.Person
-import com.example.mymovieapp.person_screen.domain.model.ResponsePersonType
+import com.example.mymovieapp.person_screen.data.source.PersonPageSource
+import com.example.mymovieapp.person_screen.domain.models.Person
+import com.example.mymovieapp.person_screen.domain.models.ResponsePersonType
 import com.example.mymovieapp.person_screen.domain.repository.PersonRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

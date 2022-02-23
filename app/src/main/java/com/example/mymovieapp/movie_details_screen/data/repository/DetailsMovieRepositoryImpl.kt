@@ -1,13 +1,14 @@
 package com.example.mymovieapp.movie_details_screen.data.repository
 
-import com.example.mymovieapp.movie_screen.domain.model.MovieResponse
-import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
-import com.example.mymovieapp.movie_details_screen.domain.model.TrailerResponse
-import com.example.mymovieapp.movie_details_screen.domain.repository.DetailsMovieRepository
 import com.example.mymovieapp.app.api.RetrofitInstance
+import com.example.mymovieapp.movie_details_screen.domain.models.MovieDetails
+import com.example.mymovieapp.movie_details_screen.domain.models.TrailerResponse
+import com.example.mymovieapp.movie_details_screen.domain.repository.DetailsMovieRepository
+import com.example.mymovieapp.movie_screen.domain.model.MovieResponse
 import retrofit2.Response
 
 class DetailsMovieRepositoryImpl : DetailsMovieRepository {
+
     override suspend fun getMovieDetails(id: Int): Response<MovieDetails> {
         return RetrofitInstance.movieApi.getMovieDetails(id = id)
     }

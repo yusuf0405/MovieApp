@@ -1,4 +1,4 @@
-package com.example.mymovieapp.favorite_screen.domain.model
+package com.example.mymovieapp.favorite_screen.domain.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

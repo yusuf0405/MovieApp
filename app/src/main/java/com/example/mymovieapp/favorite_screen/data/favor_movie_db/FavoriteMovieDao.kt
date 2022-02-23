@@ -1,7 +1,7 @@
 package com.example.mymovieapp.favorite_screen.data.favor_movie_db
 
 import androidx.room.*
-import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
 
 
 @Dao

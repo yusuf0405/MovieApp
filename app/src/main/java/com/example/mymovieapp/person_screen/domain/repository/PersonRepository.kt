@@ -1,6 +1,6 @@
 package com.example.mymovieapp.person_screen.domain.repository
 
-import com.example.mymovieapp.person_screen.domain.model.PersonResponse
+import com.example.mymovieapp.person_screen.domain.models.PersonResponse
 import retrofit2.Response
 
 interface PersonRepository {

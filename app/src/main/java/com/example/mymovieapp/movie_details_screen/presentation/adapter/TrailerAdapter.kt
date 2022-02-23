@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
-import com.example.mymovieapp.movie_details_screen.domain.model.Trailer
+import com.example.mymovieapp.movie_details_screen.domain.models.Trailer
 import com.example.mymovieapp.databinding.TrilerItemBinding
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer

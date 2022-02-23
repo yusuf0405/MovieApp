@@ -1,10 +1,10 @@
-package com.example.mymovieapp.person_screen.data.sourse
+package com.example.mymovieapp.person_screen.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.mymovieapp.person_screen.domain.model.Person
+import com.example.mymovieapp.person_screen.domain.models.Person
 import com.example.mymovieapp.app.utils.Utils.Companion.MAX_PAGE_SIZE
-import com.example.mymovieapp.person_screen.domain.model.ResponsePersonType
+import com.example.mymovieapp.person_screen.domain.models.ResponsePersonType
 import com.example.mymovieapp.person_screen.domain.repository.PersonRepository
 import retrofit2.HttpException
 

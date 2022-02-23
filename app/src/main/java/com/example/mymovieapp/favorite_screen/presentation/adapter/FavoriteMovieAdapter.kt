@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
 import com.example.mymovieapp.app.utils.Utils
 import com.example.mymovieapp.databinding.FavMovieItemBinding
-import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
 import com.squareup.picasso.Picasso
 
 class FavMoviesDiffCallBack(

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
 import com.example.mymovieapp.databinding.PersonItemBinding
-import com.example.mymovieapp.person_screen.domain.model.Person
+import com.example.mymovieapp.person_screen.domain.models.Person
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
 import com.squareup.picasso.Picasso
 

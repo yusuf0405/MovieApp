@@ -1,7 +1,7 @@
 package com.example.mymovieapp.favorite_screen.data.repository
 
 import com.example.mymovieapp.favorite_screen.data.favor_movie_db.FavoriteMovieDao
-import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
 import com.example.mymovieapp.favorite_screen.domain.repository.FavoriteMovieRepository
 import javax.inject.Inject
 

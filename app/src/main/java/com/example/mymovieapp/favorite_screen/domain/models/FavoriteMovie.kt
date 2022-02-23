@@ -1,8 +1,7 @@
-package com.example.mymovieapp.favorite_screen.domain.model
+package com.example.mymovieapp.favorite_screen.domain.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 @Entity(tableName = "favor_movie_database")

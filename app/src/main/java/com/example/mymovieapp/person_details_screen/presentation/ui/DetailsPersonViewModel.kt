@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mymovieapp.app.toFavoritePerson
-import com.example.mymovieapp.favorite_screen.domain.model.FavoritePerson
+import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 import com.example.mymovieapp.favorite_screen.domain.usecase.AddPersonFavoriteUseCase
 import com.example.mymovieapp.favorite_screen.domain.usecase.AllFavoritePersonsUseCase
 import com.example.mymovieapp.favorite_screen.domain.usecase.DeletePersonFavoriteUseCase
-import com.example.mymovieapp.person_details_screen.domain.model.MovieCredits
-import com.example.mymovieapp.person_details_screen.domain.model.PersonDetails
+import com.example.mymovieapp.person_details_screen.domain.models.MovieCredits
+import com.example.mymovieapp.person_details_screen.domain.models.PersonDetails
 import com.example.mymovieapp.person_details_screen.domain.usecase.GetPersonCreditMoviesUseCase
 import com.example.mymovieapp.person_details_screen.domain.usecase.GetPersonDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

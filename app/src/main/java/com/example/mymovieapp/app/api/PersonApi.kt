@@ -1,9 +1,9 @@
 package com.example.mymovieapp.app.api
 
 import androidx.annotation.IntRange
-import com.example.mymovieapp.person_screen.domain.model.PersonResponse
-import com.example.mymovieapp.person_details_screen.domain.model.MovieCredits
-import com.example.mymovieapp.person_details_screen.domain.model.PersonDetails
+import com.example.mymovieapp.person_screen.domain.models.PersonResponse
+import com.example.mymovieapp.person_details_screen.domain.models.MovieCredits
+import com.example.mymovieapp.person_details_screen.domain.models.PersonDetails
 import com.example.mymovieapp.app.utils.Utils.Companion.DEFAULT_PAGE_SIZE
 import com.example.mymovieapp.app.utils.Utils.Companion.MAX_PAGE_SIZE
 import retrofit2.Response

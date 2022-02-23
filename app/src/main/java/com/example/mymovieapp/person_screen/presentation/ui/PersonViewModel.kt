@@ -6,8 +6,8 @@ import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.mymovieapp.person_screen.domain.model.Person
-import com.example.mymovieapp.person_screen.domain.model.ResponsePersonType
+import com.example.mymovieapp.person_screen.domain.models.Person
+import com.example.mymovieapp.person_screen.domain.models.ResponsePersonType
 import com.example.mymovieapp.person_screen.domain.usecase.GetPagerPersonUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi

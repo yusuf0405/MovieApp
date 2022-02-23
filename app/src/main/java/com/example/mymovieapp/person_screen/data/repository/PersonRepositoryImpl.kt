@@ -1,7 +1,7 @@
 package com.example.mymovieapp.person_screen.data.repository
 
 import com.example.mymovieapp.app.api.RetrofitInstance
-import com.example.mymovieapp.person_screen.domain.model.PersonResponse
+import com.example.mymovieapp.person_screen.domain.models.PersonResponse
 import com.example.mymovieapp.person_screen.domain.repository.PersonRepository
 import retrofit2.Response
 

@@ -4,8 +4,8 @@ import androidx.annotation.IntRange
 import com.example.mymovieapp.app.utils.Utils.Companion.DEFAULT_PAGE_SIZE
 import com.example.mymovieapp.app.utils.Utils.Companion.MAX_PAGE_SIZE
 import com.example.mymovieapp.movie_screen.domain.model.MovieResponse
-import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
-import com.example.mymovieapp.movie_details_screen.domain.model.TrailerResponse
+import com.example.mymovieapp.movie_details_screen.domain.models.MovieDetails
+import com.example.mymovieapp.movie_details_screen.domain.models.TrailerResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

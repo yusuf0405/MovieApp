@@ -1,4 +1,4 @@
-package com.example.mymovieapp.person_details_screen.domain.model
+package com.example.mymovieapp.person_details_screen.domain.models
 
 
 import com.example.mymovieapp.movie_screen.domain.model.Movie

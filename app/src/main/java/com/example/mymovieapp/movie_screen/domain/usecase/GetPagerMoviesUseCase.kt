@@ -3,7 +3,7 @@ package com.example.mymovieapp.movie_screen.domain.usecase
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.mymovieapp.movie_screen.data.souse.MoviePageSource
+import com.example.mymovieapp.movie_screen.data.source.MoviePageSource
 import com.example.mymovieapp.movie_screen.domain.model.Movie
 import com.example.mymovieapp.movie_screen.domain.model.ResponseUser
 import com.example.mymovieapp.movie_screen.domain.repository.MovieRepository

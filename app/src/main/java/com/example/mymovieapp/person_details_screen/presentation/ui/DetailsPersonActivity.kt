@@ -14,11 +14,11 @@ import com.example.mymovieapp.app.utils.Utils
 import com.example.mymovieapp.app.utils.Utils.Companion.MOVIE_ID_KEY
 import com.example.mymovieapp.app.utils.Utils.Companion.PERSON_ID_KEY
 import com.example.mymovieapp.databinding.ActivityDetailsPersonBinding
-import com.example.mymovieapp.favorite_screen.domain.model.FavoritePerson
+import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 import com.example.mymovieapp.movie_details_screen.presentation.adapter.MovieAdapter
 import com.example.mymovieapp.movie_details_screen.presentation.ui.DetailsMovieActivity
 import com.example.mymovieapp.movie_screen.presentation.adapter.ItemOnClickListener
-import com.example.mymovieapp.person_details_screen.domain.model.PersonDetails
+import com.example.mymovieapp.person_details_screen.domain.models.PersonDetails
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 

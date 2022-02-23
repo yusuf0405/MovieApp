@@ -1,6 +1,6 @@
 package com.example.mymovieapp.movie_details_screen.domain.usecase
 
-import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
+import com.example.mymovieapp.movie_details_screen.domain.models.MovieDetails
 import com.example.mymovieapp.movie_details_screen.domain.repository.DetailsMovieRepository
 import retrofit2.Response
 import javax.inject.Inject

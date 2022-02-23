@@ -52,6 +52,14 @@
             android:textColor="@color/red"
             android:textSize="12sp" />
 
+        <ImageView
+            android:id="@+id/delete_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
+
     </LinearLayout>
 
     <com.vaibhavlakhera.circularprogressview.CircularProgressView
@@ -78,13 +86,6 @@
         app:totalValue="100"
         app:totalWidth="8dp" />
 
-    <ImageView
-        android:id="@+id/delete_btn"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end"
-        app:srcCompat="@drawable/ic_baseline_delete_24" />
+
 
 </androidx.cardview.widget.CardView>

@@ -1,4 +1,4 @@
-package com.example.mymovieapp.person_screen.domain.model
+package com.example.mymovieapp.person_screen.domain.models
 
 
 import com.google.gson.annotations.SerializedName

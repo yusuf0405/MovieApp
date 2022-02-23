@@ -1,4 +1,4 @@
-package com.example.mymovieapp.movie_screen.data.souse
+package com.example.mymovieapp.movie_screen.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

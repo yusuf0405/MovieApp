@@ -1,6 +1,6 @@
 package com.example.mymovieapp.favorite_screen.domain.repository
 
-import com.example.mymovieapp.favorite_screen.domain.model.FavoritePerson
+import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 
 interface FavoritePersonRepository {
 

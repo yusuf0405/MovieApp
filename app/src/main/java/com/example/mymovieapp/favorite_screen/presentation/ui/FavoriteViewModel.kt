@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
-import com.example.mymovieapp.favorite_screen.domain.model.FavoritePerson
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
+import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 import com.example.mymovieapp.favorite_screen.domain.usecase.AllFavoriteMoviesUseCase
 import com.example.mymovieapp.favorite_screen.domain.usecase.AllFavoritePersonsUseCase
 import com.example.mymovieapp.favorite_screen.domain.usecase.DeleteMovieFavoriteUseCase

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
 import com.example.mymovieapp.databinding.FavPersonItemBinding
-import com.example.mymovieapp.favorite_screen.domain.model.FavoritePerson
+import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 import com.squareup.picasso.Picasso
 
 

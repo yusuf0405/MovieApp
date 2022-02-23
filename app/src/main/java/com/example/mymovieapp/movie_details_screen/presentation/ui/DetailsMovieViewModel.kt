@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mymovieapp.app.toFavoriteMovies
-import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
 import com.example.mymovieapp.favorite_screen.domain.usecase.AddMovieFavoriteUseCase
 import com.example.mymovieapp.favorite_screen.domain.usecase.AllFavoriteMoviesUseCase
 import com.example.mymovieapp.favorite_screen.domain.usecase.DeleteMovieFavoriteUseCase
-import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
-import com.example.mymovieapp.movie_details_screen.domain.model.TrailerResponse
+import com.example.mymovieapp.movie_details_screen.domain.models.MovieDetails
+import com.example.mymovieapp.movie_details_screen.domain.models.TrailerResponse
 import com.example.mymovieapp.movie_details_screen.domain.usecase.GetMovieDetailsUseCase
 import com.example.mymovieapp.movie_details_screen.domain.usecase.GetMovieTrailerUseCase
 import com.example.mymovieapp.movie_details_screen.domain.usecase.GetSimilarMovieUseCase

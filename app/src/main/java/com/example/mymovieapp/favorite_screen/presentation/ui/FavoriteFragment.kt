@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mymovieapp.R
 import com.example.mymovieapp.databinding.FavoriteMovieFragmentBinding
-import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
-import com.example.mymovieapp.favorite_screen.domain.model.FavoritePerson
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
+import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 import com.example.mymovieapp.favorite_screen.presentation.adapter.FavMovieItemOnClick
 import com.example.mymovieapp.favorite_screen.presentation.adapter.FavPersonItemOnClick
 import com.example.mymovieapp.favorite_screen.presentation.adapter.FavoriteMovieAdapter

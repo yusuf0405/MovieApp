@@ -17,7 +17,7 @@ import com.example.mymovieapp.person_screen.presentation.adapter.PersonItemOnCli
 import com.example.mymovieapp.app.utils.Utils.Companion.PERSON_ID_KEY
 import com.example.mymovieapp.databinding.PersonFragmentBinding
 import com.example.mymovieapp.movie_screen.presentation.adapter.MovieLoaderStateAdapter
-import com.example.mymovieapp.person_screen.domain.model.ResponsePersonType
+import com.example.mymovieapp.person_screen.domain.models.ResponsePersonType
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*

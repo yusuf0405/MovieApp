@@ -15,8 +15,8 @@ import com.example.mymovieapp.movie_screen.presentation.adapter.ItemOnClickListe
 import com.example.mymovieapp.app.utils.Utils.Companion.MOVIE_ID_KEY
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
 import com.example.mymovieapp.databinding.ActivityMovieDetailsBinding
-import com.example.mymovieapp.favorite_screen.domain.model.FavoriteMovie
-import com.example.mymovieapp.movie_details_screen.domain.model.MovieDetails
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
+import com.example.mymovieapp.movie_details_screen.domain.models.MovieDetails
 import com.example.mymovieapp.movie_details_screen.presentation.adapter.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*

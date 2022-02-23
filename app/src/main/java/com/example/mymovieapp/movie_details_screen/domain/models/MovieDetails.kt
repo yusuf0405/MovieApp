@@ -1,10 +1,9 @@
-package com.example.mymovieapp.movie_details_screen.domain.model
+package com.example.mymovieapp.movie_details_screen.domain.models
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class MovieDetails(
-
     val budget: Int,
     val id: Int,
     val overview: String,
