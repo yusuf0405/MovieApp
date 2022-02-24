@@ -18,6 +18,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @DelicateCoroutinesApi
+
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val allFavoriteMoviesUseCase: AllFavoriteMoviesUseCase,

@@ -1,7 +1,8 @@
 # Программа, полностью написанная на Kotlin с компонентами архитектуры MVVM и чистой архитектурой
 
-Простое приложение, которое показывает, как создать приложение для Android в чистой архитектуре с использованием языка Kotlin.
-Он просто показывает список фильмов и актеров, подробную информацию о них, возможность поиска, а также добавления в
+Простое приложение, которое написано в чистой архитектуре с использованием языка Kotlin.
+Он показывает список фильмов и актеров, подробную информацию о них, возможность поиска, а также добавления в избранное.
+
 ![image](https://firebasestorage.googleapis.com/v0/b/fruit-market-e5149.appspot.com/o/app_movie_.png?alt=media&token=310daf1a-fff1-48cb-b7ef-a29b5f711a64)
 ![image](https://firebasestorage.googleapis.com/v0/b/fruit-market-e5149.appspot.com/o/person_search.png?alt=media&token=71a5eea0-0d26-4cc6-8707-94a2ca1c329b)
 ![image](https://firebasestorage.googleapis.com/v0/b/fruit-market-e5149.appspot.com/o/details_movie.png?alt=media&token=db3221c3-a15b-4927-9f7c-7462c1e19bb3)
@@ -38,7 +39,7 @@
 * [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines) Сопрограммы - это богатая библиотека для сопрограмм, разработанная компанией JetBrains. Он содержит ряд высокоуровневых примитивов с поддержкой сопрограмм, которые рассматриваются в этом руководстве, включая запуск, асинхронность и другие.
 
 ### Player
-* [Youtube Player](https://github.com/PierfrancescoSoffritti/android-youtube-player) 
+* [Youtube Player](https://github.com/PierfrancescoSoffritti/android-youtube-player) Android-youtube-player - это стабильный и настраиваемый проигрыватель YouTube с открытым исходным кодом для Android. Он обеспечивает простое представление, которое может быть легко интегрировано в каждое Activity / Fragment.
 
 ### DI
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) Hilt - это библиотека внедрения зависимостей для Android, которая сокращает время выполнения ручного внедрения зависимостей в ваш проект. Выполнение ручного внедрения зависимостей требует, чтобы вы создавали каждый класс и его зависимости вручную, а также использовали контейнеры для повторного использования зависимостей и управления ими.

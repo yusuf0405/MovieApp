@@ -34,7 +34,6 @@ class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private val movieAdapter = FavoriteMovieAdapter(object : FavMovieItemOnClick {
         override fun deleteMovie(movie: FavoriteMovie) {
-
             viewModel.deleteFavoriteMovies(movie = movie)
         }
 
@@ -85,6 +84,7 @@ class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener {
             }
         }
     }
+
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
     }

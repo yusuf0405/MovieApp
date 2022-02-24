@@ -5,6 +5,7 @@ import com.example.mymovieapp.favorite_screen.domain.repository.FavoriteMovieRep
 import javax.inject.Inject
 
 class AddMovieFavoriteUseCase @Inject constructor(private val repository: FavoriteMovieRepository) {
+
     suspend fun execute(movie: FavoriteMovie) {
         repository.addNewMovie(movie = movie)
 

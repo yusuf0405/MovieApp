@@ -7,10 +7,10 @@ import com.example.mymovieapp.person_details_screen.domain.repository.DetailsPer
 import retrofit2.Response
 
 class DetailsPersonRepositoryImpl : DetailsPersonRepository {
-    override suspend fun getPersonDetails(id: Int): Response<PersonDetails> {
-        return RetrofitInstance.personApi.getPersonDetails(id = id)
-    }
-    override suspend fun getPersonCreditMovies(id: Int): Response<MovieCredits> {
-        return RetrofitInstance.personApi.getPersonCreditMovies(id = id)
-    }
+    override suspend fun getPersonDetails(id: Int): Response<PersonDetails> =
+        RetrofitInstance.personApi.getPersonDetails(id = id)
+
+    override suspend fun getPersonCreditMovies(id: Int): Response<MovieCredits> =
+        RetrofitInstance.personApi.getPersonCreditMovies(id = id)
+
 }

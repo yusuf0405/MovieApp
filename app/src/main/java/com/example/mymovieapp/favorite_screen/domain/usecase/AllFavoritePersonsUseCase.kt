@@ -5,5 +5,6 @@ import com.example.mymovieapp.favorite_screen.domain.repository.FavoritePersonRe
 import javax.inject.Inject
 
 class AllFavoritePersonsUseCase @Inject constructor(private val repository: FavoritePersonRepository) {
+
     suspend fun execute(): List<FavoritePerson> = repository.allFavoritePersons()
 }

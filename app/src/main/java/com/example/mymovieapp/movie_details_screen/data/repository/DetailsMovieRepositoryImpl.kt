@@ -9,15 +9,15 @@ import retrofit2.Response
 
 class DetailsMovieRepositoryImpl : DetailsMovieRepository {
 
-    override suspend fun getMovieDetails(id: Int): Response<MovieDetails> {
-        return RetrofitInstance.movieApi.getMovieDetails(id = id)
-    }
+    override suspend fun getMovieDetails(id: Int): Response<MovieDetails> =
+        RetrofitInstance.movieApi.getMovieDetails(id = id)
 
-    override suspend fun getMovieTrailer(id: Int): Response<TrailerResponse> {
-        return RetrofitInstance.movieApi.getMovieTrailer(id = id)
-    }
 
-    override suspend fun getSimilarMovie(id: Int): Response<MovieResponse> {
-        return RetrofitInstance.movieApi.getSimilarMovie(id = id)
-    }
+    override suspend fun getMovieTrailer(id: Int): Response<TrailerResponse> =
+        RetrofitInstance.movieApi.getMovieTrailer(id = id)
+
+
+    override suspend fun getSimilarMovie(id: Int): Response<MovieResponse> =
+        RetrofitInstance.movieApi.getSimilarMovie(id = id)
+
 }
