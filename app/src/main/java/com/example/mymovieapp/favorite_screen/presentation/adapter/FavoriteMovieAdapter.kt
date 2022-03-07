@@ -33,11 +33,7 @@ class FavMoviesDiffCallBack(
 
 }
 
-interface FavMovieItemOnClick {
-    fun deleteMovie(movie: FavoriteMovie)
-}
-
-class FavoriteMovieAdapter(private val actionListener: FavMovieItemOnClick) :
+class FavoriteMovieAdapter(private val actionListener: FavItemOnClick) :
     RecyclerView.Adapter<FavoriteMovieAdapter.MovieViewHolder>() {
     var favoriteMovieList: List<FavoriteMovie> = emptyList()
         set(newValue) {

@@ -25,9 +25,7 @@ class DetailsPersonViewModel @Inject constructor(
     private val addPersonFavoriteUseCase: AddPersonFavoriteUseCase,
     private val allFavoritePersonsUseCase: AllFavoritePersonsUseCase,
     private val deletePersonFavoriteUseCase: DeletePersonFavoriteUseCase,
-
-    ) :
-    ViewModel() {
+    ) : ViewModel() {
 
     private val _personOfList: MutableLiveData<Response<PersonDetails>> = MutableLiveData()
     val personOfList: LiveData<Response<PersonDetails>> = _personOfList
@@ -35,34 +33,26 @@ class DetailsPersonViewModel @Inject constructor(
     private val _movieListResponse: MutableLiveData<Response<MovieCredits>> = MutableLiveData()
     val movieListResponse: LiveData<Response<MovieCredits>> = _movieListResponse
 
-    fun getPersonDetails(id: Int) {
-        viewModelScope.launch {
-            _personOfList.value = getPersonDetailsUseCase.exesute(id = id)
+    private val _movieFavList: MutableLiveData<List<FavoritePerson>> = MutableLiveData()
+    val movieFavList: LiveData<List<FavoritePerson>> = _movieFavList
 
-        }
-    }
+    fun getPersonDetails(id: Int) =
+        viewModelScope.launch { _personOfList.value = getPersonDetailsUseCase.exesute(id = id) }
 
-    fun getPersonCreditMovies(id: Int) {
+    fun getPersonCreditMovies(id: Int) =
         viewModelScope.launch {
             _movieListResponse.value = getPersonCreditMoviesUseCase.exesute(id = id)
-
         }
-    }
 
-    fun addPersonFavorite(person: PersonDetails) {
-        val favoritePerson = person.toFavoritePerson()
-        viewModelScope.launch {
-            addPersonFavoriteUseCase.execute(person = favoritePerson)
-        }
-    }
+    fun addPersonFavorite(person: PersonDetails) =
+        viewModelScope.launch { addPersonFavoriteUseCase.execute(person = person.toFavoritePerson()) }
 
-    fun deletePersonFavorite(person: PersonDetails) {
-        val favoritePerson = person.toFavoritePerson()
-        viewModelScope.launch {
-            deletePersonFavoriteUseCase.execute(person = favoritePerson)
-        }
-    }
 
-    suspend fun allFavoritePersons(): List<FavoritePerson> = allFavoritePersonsUseCase.execute()
+    fun deletePersonFavorite(person: PersonDetails) =
+        viewModelScope.launch { deletePersonFavoriteUseCase.execute(person = person.toFavoritePerson()) }
+
+
+    fun allFavoritePersons() =
+        viewModelScope.launch { _movieFavList.value = allFavoritePersonsUseCase.execute() }
 
 }

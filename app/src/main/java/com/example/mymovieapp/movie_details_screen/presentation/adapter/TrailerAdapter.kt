@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
-import com.example.mymovieapp.movie_details_screen.domain.models.Trailer
 import com.example.mymovieapp.databinding.TrilerItemBinding
+import com.example.mymovieapp.movie_details_screen.domain.models.Trailer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
@@ -41,15 +41,12 @@ class TrailerAdapter :
 
     inner class FruitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var binding = TrilerItemBinding.bind(itemView)
-        @SuppressLint("NotifyDataSetChanged")
         fun bind(trailer: Trailer) {
             binding.apply {
                 youtubePlayerView.addYouTubePlayerListener(object : YouTubePlayerListener {
-                    override fun onApiChange(youTubePlayer: YouTubePlayer) {
-                    }
+                    override fun onApiChange(youTubePlayer: YouTubePlayer) {}
 
-                    override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {
-                    }
+                    override fun onCurrentSecond(youTubePlayer: YouTubePlayer, second: Float) {}
 
                     override fun onError(
                         youTubePlayer: YouTubePlayer,
@@ -71,7 +68,6 @@ class TrailerAdapter :
 
                     override fun onReady(youTubePlayer: YouTubePlayer) {
                         youTubePlayer.cueVideo(trailer.key, 0F)
-
                     }
 
                     override fun onStateChange(
@@ -80,12 +76,9 @@ class TrailerAdapter :
                     ) {
                     }
 
-                    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {
-                    }
+                    override fun onVideoDuration(youTubePlayer: YouTubePlayer, duration: Float) {}
 
-                    override fun onVideoId(youTubePlayer: YouTubePlayer, videoId: String) {
-
-                    }
+                    override fun onVideoId(youTubePlayer: YouTubePlayer, videoId: String) {}
 
                     override fun onVideoLoadedFraction(
                         youTubePlayer: YouTubePlayer,
@@ -94,8 +87,6 @@ class TrailerAdapter :
                     }
 
                 })
-
-
             }
         }
     }

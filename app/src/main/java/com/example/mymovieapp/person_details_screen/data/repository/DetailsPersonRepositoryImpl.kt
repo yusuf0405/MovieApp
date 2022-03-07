@@ -1,16 +1,18 @@
 package com.example.mymovieapp.person_details_screen.data.repository
 
-import com.example.mymovieapp.app.api.RetrofitInstance
+import com.example.mymovieapp.app.api.PersonApi
 import com.example.mymovieapp.person_details_screen.domain.models.MovieCredits
 import com.example.mymovieapp.person_details_screen.domain.models.PersonDetails
 import com.example.mymovieapp.person_details_screen.domain.repository.DetailsPersonRepository
 import retrofit2.Response
+import javax.inject.Inject
 
-class DetailsPersonRepositoryImpl : DetailsPersonRepository {
+class DetailsPersonRepositoryImpl @Inject constructor(private val personApi: PersonApi) :
+    DetailsPersonRepository {
     override suspend fun getPersonDetails(id: Int): Response<PersonDetails> =
-        RetrofitInstance.personApi.getPersonDetails(id = id)
+        personApi.getPersonDetails(id = id)
 
     override suspend fun getPersonCreditMovies(id: Int): Response<MovieCredits> =
-        RetrofitInstance.personApi.getPersonCreditMovies(id = id)
+        personApi.getPersonCreditMovies(id = id)
 
 }

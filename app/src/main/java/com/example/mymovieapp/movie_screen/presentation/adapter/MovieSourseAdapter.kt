@@ -15,13 +15,13 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import javax.inject.Inject
 
 
-interface ItemOnClickListener {
+interface MovieItemOnClickListener {
     fun showDetailsMovie(id: Int)
 }
 
 @DelicateCoroutinesApi
 class MovieAdapter @Inject constructor(
-    private val actionListener: ItemOnClickListener,
+    private val actionListener: MovieItemOnClickListener,
 ) : PagingDataAdapter<Movie, MovieAdapter.HomeNewsViewHolder>(MovieDiffItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeNewsViewHolder {

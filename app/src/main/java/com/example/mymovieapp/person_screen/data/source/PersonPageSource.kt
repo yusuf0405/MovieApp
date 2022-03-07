@@ -4,13 +4,13 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.mymovieapp.person_screen.domain.models.Person
 import com.example.mymovieapp.app.utils.Utils.Companion.MAX_PAGE_SIZE
-import com.example.mymovieapp.person_screen.domain.models.ResponsePersonType
+import com.example.mymovieapp.person_screen.domain.models.PersonResType
 import com.example.mymovieapp.person_screen.domain.repository.PersonRepository
 import retrofit2.HttpException
 
 class PersonPageSource(
     private val api: PersonRepository,
-    private val responseType: ResponsePersonType,
+    private val responseType: PersonResType,
     private val query: String,
 ) : PagingSource<Int, Person>() {
     override fun getRefreshKey(state: PagingState<Int, Person>): Int? {
@@ -24,7 +24,7 @@ class PersonPageSource(
         val pageSize: Int = params.loadSize.coerceAtLeast(MAX_PAGE_SIZE)
         return try {
             val response = when (responseType) {
-                ResponsePersonType.PERSON -> {
+                PersonResType.PERSON -> {
                     api.getPopularPerson(page = page, pageSize = pageSize)
                 }
                 else -> {

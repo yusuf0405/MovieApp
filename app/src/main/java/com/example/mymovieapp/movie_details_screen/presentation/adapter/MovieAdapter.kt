@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
 import com.example.mymovieapp.databinding.MovieItemBinding
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
-import com.example.mymovieapp.movie_screen.presentation.adapter.ItemOnClickListener
+import com.example.mymovieapp.movie_screen.presentation.adapter.MovieItemOnClickListener
 import com.example.mymovieapp.movie_screen.domain.model.Movie
 import com.squareup.picasso.Picasso
 
-class MovieAdapter(private val actionListener: ItemOnClickListener) :
+class MovieAdapter(private val actionListener: MovieItemOnClickListener) :
     RecyclerView.Adapter<MovieAdapter.SimilarViewHolder>() {
 
     var movieList = emptyList<Movie>()

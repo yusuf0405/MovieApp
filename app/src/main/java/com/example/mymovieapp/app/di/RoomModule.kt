@@ -14,6 +14,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class RoomModule {
+
     // <!-- Favorite Movie Room DB and Dao class create   -->
     @Provides
     @Singleton

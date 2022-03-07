@@ -1,20 +1,22 @@
 package com.example.mymovieapp.person_screen.data.repository
 
-import com.example.mymovieapp.app.api.RetrofitInstance
+import com.example.mymovieapp.app.api.PersonApi
 import com.example.mymovieapp.person_screen.domain.models.PersonResponse
 import com.example.mymovieapp.person_screen.domain.repository.PersonRepository
 import retrofit2.Response
+import javax.inject.Inject
 
-class PersonRepositoryImpl : PersonRepository {
+class PersonRepositoryImpl @Inject constructor(private val personApi: PersonApi) :
+    PersonRepository {
     override suspend fun getPopularPerson(page: Int, pageSize: Int): Response<PersonResponse> =
-        RetrofitInstance.personApi.getPopularPerson(page = page, pageSize = pageSize)
+        personApi.getPopularPerson(page = page, pageSize = pageSize)
 
     override suspend fun getSearchPerson(
         query: String,
         page: Int,
         pageSize: Int,
     ): Response<PersonResponse> =
-        RetrofitInstance.personApi.getSearchPerson(query = query,
+        personApi.getSearchPerson(query = query,
             page = page,
             pageSize = pageSize)
 

@@ -1,9 +1,6 @@
 package com.example.mymovieapp.movie_screen.presentation.ui
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.mymovieapp.movie_screen.domain.model.Movie
@@ -23,17 +20,16 @@ class MovieViewModel @Inject constructor(
     private val getPagerMoviesUseCase: GetPagerMoviesUseCase,
 ) : ViewModel() {
 
+    private val _responseType: MutableLiveData<ResponseUser> = MutableLiveData<ResponseUser>()
+    private val _responseOldType: MutableLiveData<ResponseUser> = MutableLiveData<ResponseUser>()
+    val responseType: LiveData<ResponseUser> = _responseOldType
 
-    private val _responseBy: MutableLiveData<ResponseUser> = MutableLiveData<ResponseUser>()
     private val _queryBy: MutableLiveData<String> = MutableLiveData<String>()
-    var oldResponse: ResponseUser = ResponseUser.POPULAR
 
-    init {
-        _queryBy.value = ""
-    }
+    init { _queryBy.value = "" }
 
-    val movieFlow: Flow<PagingData<Movie>> by lazy {
-        _responseBy.asFlow()
+    val movieFlow: Flow<PagingData<Movie>> by lazy(LazyThreadSafetyMode.NONE) {
+        _responseType.asFlow()
             .flatMapLatest {
                 getPagerMoviesUseCase.exesute(response = it, query = _queryBy.value!!)
             }
@@ -41,12 +37,13 @@ class MovieViewModel @Inject constructor(
     }
 
     fun responseType(newResponse: ResponseUser) {
-        oldResponse = newResponse
-        _responseBy.value = newResponse
+        _responseOldType.value = newResponse
+        _responseType.value = newResponse
     }
 
     fun responseSearchType(newQuery: String) {
         _queryBy.value = newQuery
-        _responseBy.value = ResponseUser.SEARCH
+        if (_responseType.value != ResponseUser.SEARCH) _responseOldType.value = _responseType.value
+        _responseType.value = ResponseUser.SEARCH
     }
 }

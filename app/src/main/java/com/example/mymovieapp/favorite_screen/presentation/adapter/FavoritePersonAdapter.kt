@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mymovieapp.R
 import com.example.mymovieapp.app.utils.Utils.Companion.POSTER_BASE_URL
 import com.example.mymovieapp.databinding.FavPersonItemBinding
+import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
 import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 import com.squareup.picasso.Picasso
 
@@ -34,11 +35,9 @@ class FavPersonDiffCallBack(
 
 }
 
-interface FavPersonItemOnClick {
-    fun deletePerson(person: FavoritePerson)
-}
 
-class FavoritePersonAdapter(private val actionListener: FavPersonItemOnClick) :
+
+class FavoritePersonAdapter(private val actionListener: FavItemOnClick) :
     RecyclerView.Adapter<FavoritePersonAdapter.PersonViewHolder>() {
     var favPersonList: List<FavoritePerson> = emptyList()
         set(newValue) {

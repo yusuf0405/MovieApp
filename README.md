@@ -2,6 +2,7 @@
 
 Простое приложение, которое написано в чистой архитектуре с использованием языка Kotlin.
 Он показывает список фильмов и актеров, подробную информацию о них, возможность поиска, а также добавления в избранное.
+Приложение написано в учебных целях.
 
 ![image](https://firebasestorage.googleapis.com/v0/b/fruit-market-e5149.appspot.com/o/app_movie_.png?alt=media&token=310daf1a-fff1-48cb-b7ef-a29b5f711a64)
 ![image](https://firebasestorage.googleapis.com/v0/b/fruit-market-e5149.appspot.com/o/person_search.png?alt=media&token=71a5eea0-0d26-4cc6-8707-94a2ca1c329b)

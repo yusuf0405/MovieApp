@@ -14,8 +14,7 @@ import com.example.mymovieapp.R
 import com.example.mymovieapp.databinding.FavoriteMovieFragmentBinding
 import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
 import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
-import com.example.mymovieapp.favorite_screen.presentation.adapter.FavMovieItemOnClick
-import com.example.mymovieapp.favorite_screen.presentation.adapter.FavPersonItemOnClick
+import com.example.mymovieapp.favorite_screen.presentation.adapter.FavItemOnClick
 import com.example.mymovieapp.favorite_screen.presentation.adapter.FavoriteMovieAdapter
 import com.example.mymovieapp.favorite_screen.presentation.adapter.FavoritePersonAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,30 +24,30 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @DelicateCoroutinesApi
 @AndroidEntryPoint
-class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener {
+class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener, FavItemOnClick {
 
     private val binding: FavoriteMovieFragmentBinding by lazy(LazyThreadSafetyMode.NONE) {
         FavoriteMovieFragmentBinding.inflate(layoutInflater)
     }
     private val viewModel: FavoriteViewModel by viewModels()
 
-    private val movieAdapter = FavoriteMovieAdapter(object : FavMovieItemOnClick {
-        override fun deleteMovie(movie: FavoriteMovie) {
-            viewModel.deleteFavoriteMovies(movie = movie)
-        }
-
-    })
-    private val personAdapter = FavoritePersonAdapter(object : FavPersonItemOnClick {
-        override fun deletePerson(person: FavoritePerson) {
-            viewModel.deleteFavoritePerson(person = person)
-        }
-
-    })
+    private val movieAdapter: FavoriteMovieAdapter by lazy(LazyThreadSafetyMode.NONE) {
+        FavoriteMovieAdapter(this)
+    }
+    private val personAdapter: FavoritePersonAdapter by lazy(LazyThreadSafetyMode.NONE) {
+        FavoritePersonAdapter(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val arrayAdapter = ArrayAdapter.createFromResource(requireContext(),
             R.array.favorite,
             android.R.layout.simple_spinner_item)
@@ -65,8 +64,6 @@ class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener {
         viewModel.favoritePersons.observe(viewLifecycleOwner) {
             personAdapter.favPersonList = it
         }
-
-        return binding.root
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
@@ -86,8 +83,12 @@ class FavoriteFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-    }
+    override fun onNothingSelected(p0: AdapterView<*>?) {}
 
+    override fun deletePerson(person: FavoritePerson) = viewModel.deleteFavoritePerson(person)
+
+    override fun deleteMovie(movie: FavoriteMovie) = viewModel.deleteFavoriteMovies(movie = movie)
 
 }
+
+

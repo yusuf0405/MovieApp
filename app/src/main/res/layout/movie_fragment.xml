@@ -22,11 +22,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:paddingTop="24dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerCategories" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerCategories"
+            app:spanCount="2"
+            tools:listitem="@layout/movie_item" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <RelativeLayout
@@ -57,15 +60,15 @@
             android:layout_centerVertical="true"
             android:layout_margin="7dp"
             android:layout_toEndOf="@+id/progressBar"
-            android:text="Loading..."
+            android:text="@string/loading"
             android:textColor="@color/red" />
     </RelativeLayout>
 
     <Spinner
         android:id="@+id/spinnerCategories"
         android:layout_width="0dp"
-        android:layout_marginTop="16sp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
         android:background="@color/red"
         android:backgroundTint="@color/red"
         app:layout_constraintEnd_toEndOf="parent"

@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.mymovieapp.R
 import com.example.mymovieapp.app.utils.Utils
@@ -17,55 +16,43 @@ import com.example.mymovieapp.databinding.ActivityDetailsPersonBinding
 import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
 import com.example.mymovieapp.movie_details_screen.presentation.adapter.MovieAdapter
 import com.example.mymovieapp.movie_details_screen.presentation.ui.DetailsMovieActivity
-import com.example.mymovieapp.movie_screen.presentation.adapter.ItemOnClickListener
+import com.example.mymovieapp.movie_screen.presentation.adapter.MovieItemOnClickListener
 import com.example.mymovieapp.person_details_screen.domain.models.PersonDetails
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @DelicateCoroutinesApi
 @AndroidEntryPoint
-class DetailsPersonActivity : AppCompatActivity() {
+class DetailsPersonActivity : AppCompatActivity(), MovieItemOnClickListener {
 
     private val binding: ActivityDetailsPersonBinding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityDetailsPersonBinding.inflate(layoutInflater)
     }
     private val viewModel: DetailsPersonViewModel by viewModels()
+
+    private val adapter: MovieAdapter by lazy(LazyThreadSafetyMode.NONE) { MovieAdapter(this) }
+
     private var favoritePersons: List<FavoritePerson>? = null
     private var person: PersonDetails? = null
     private var isFavorite = false
 
-    private val adapter = MovieAdapter(object : ItemOnClickListener {
-        override fun showDetailsMovie(id: Int) {
-            val intent = Intent(this@DetailsPersonActivity, DetailsMovieActivity::class.java)
-            intent.putExtra(MOVIE_ID_KEY, id)
-            startActivity(intent)
-        }
-
-    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        binding.recyclerView.layoutManager =
-            GridLayoutManager(this, 3)
         binding.recyclerView.adapter = adapter
 
-        GlobalScope.launch(Dispatchers.Main) {
-            uiVisibility(false)
-            favoritePersons = viewModel.allFavoritePersons()
-            delay(2000)
-            val id = intent?.extras?.getInt(PERSON_ID_KEY)
-            viewModel.getPersonDetails(id = id!!)
-            viewModel.getPersonCreditMovies(id = id)
-        }
+        val id = intent?.extras?.getInt(PERSON_ID_KEY)
+        viewModel.getPersonDetails(id = id!!)
+        viewModel.getPersonCreditMovies(id = id)
 
+        viewModel.allFavoritePersons()
+        uiVisibility(false)
 
-        viewModel.movieListResponse.observe(this) { response ->
-            adapter.movieList = response.body()!!.crew
-
-        }
+        viewModel.movieFavList.observe(this) { favoritePersons = it }
+        viewModel.movieListResponse.observe(this) { adapter.movieList = it.body()!!.crew }
 
         viewModel.personOfList.observe(this) { response ->
             if (response.isSuccessful) {
@@ -108,30 +95,31 @@ class DetailsPersonActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun bindUI(person: PersonDetails, favoritePersons: List<FavoritePerson>) {
         favoritePersons.forEach {
-            if (person.id == it.id) {
-                isFavorite = true
-            }
+            if (person.id == it.id) isFavorite = true
         }
-        val poster = Utils.POSTER_BASE_URL + person.profilePath
         binding.apply {
-            if (isFavorite) {
-                tvFavoritePerson.setImageResource(R.drawable.ic_baseline_favorite_24)
-            } else {
-                tvFavoritePerson.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            if (isFavorite) tvFavoritePerson.setImageResource(R.drawable.ic_baseline_favorite_24)
+            else tvFavoritePerson.setImageResource(R.drawable.ic_baseline_favorite_border_24)
 
-            }
             nameDetailsPerson.text = person.name
-            if (person.gender == 1) gender.text = "Female"
-            else gender.text = "Male"
+            if (person.gender == 1) gender.text = "Female" else gender.text = "Male"
             placeOfBirth.text = person.placeOfBirth
             birthday.text = person.birthday
             voteAverage.rating = person.popularity.toFloat()
             biographyText.text = person.biography
-            Glide.with(this@DetailsPersonActivity)
-                .load(poster)
-                .placeholder(R.drawable.ic_placeholder_no_text)
-                .into(posterDetailsPerson)
+
         }
+        val poster = Utils.POSTER_BASE_URL + person.profilePath
+        Glide.with(this)
+            .load(poster)
+            .placeholder(R.drawable.ic_placeholder_no_text)
+            .into(binding.posterDetailsPerson)
+    }
+
+    override fun showDetailsMovie(id: Int) {
+        val intent = Intent(this, DetailsMovieActivity::class.java)
+        intent.putExtra(MOVIE_ID_KEY, id)
+        startActivity(intent)
     }
 
 }

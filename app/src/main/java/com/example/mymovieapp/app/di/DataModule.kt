@@ -1,5 +1,7 @@
 package com.example.mymovieapp.app.di
 
+import com.example.mymovieapp.app.api.MovieApi
+import com.example.mymovieapp.app.api.PersonApi
 import com.example.mymovieapp.favorite_screen.data.favor_movie_db.FavoriteMovieDao
 import com.example.mymovieapp.favorite_screen.data.favor_person_db.FavoritePersonDao
 import com.example.mymovieapp.favorite_screen.data.repository.FavoriteMovieRepositoryImpl
@@ -26,22 +28,26 @@ class DataModule {
     // <!--  Movie Repository create   -->
     @Provides
     @Singleton
-    fun provideMovieRepository(): MovieRepository = MovieRepositoryImpl()
+    fun provideMovieRepository(movieApi: MovieApi): MovieRepository =
+        MovieRepositoryImpl(movieApi = movieApi)
 
     // <!--  Person Repository create   -->
     @Provides
     @Singleton
-    fun providePersonRepository(): PersonRepository = PersonRepositoryImpl()
+    fun providePersonRepository(personApi: PersonApi): PersonRepository =
+        PersonRepositoryImpl(personApi = personApi)
 
     // <!-- Movie Details Repository create   -->
     @Provides
     @Singleton
-    fun provideDetailsMovieRepository(): DetailsMovieRepository = DetailsMovieRepositoryImpl()
+    fun provideDetailsMovieRepository(movieApi: MovieApi): DetailsMovieRepository =
+        DetailsMovieRepositoryImpl(movieApi = movieApi)
 
     // <!-- Person Details Repository create   -->
     @Provides
     @Singleton
-    fun provideDetailsPersonRepository(): DetailsPersonRepository = DetailsPersonRepositoryImpl()
+    fun provideDetailsPersonRepository(personApi: PersonApi): DetailsPersonRepository =
+        DetailsPersonRepositoryImpl(personApi = personApi)
 
     // <!-- Favorite Person Repository create   -->
     @Provides

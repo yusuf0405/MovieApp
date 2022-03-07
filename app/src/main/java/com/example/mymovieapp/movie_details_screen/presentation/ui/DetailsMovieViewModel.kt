@@ -36,45 +36,30 @@ class DetailsMovieViewModel @Inject constructor(
     private val _trailerResponse: MutableLiveData<Response<TrailerResponse>> = MutableLiveData()
     val trailerResponse: LiveData<Response<TrailerResponse>> = _trailerResponse
 
-    private val _movieSimilarResponse: MutableLiveData<Response<MovieResponse>> = MutableLiveData()
-    val movieSimilarResponse: LiveData<Response<MovieResponse>> = _movieSimilarResponse
+    private val _movieSimilar: MutableLiveData<Response<MovieResponse>> = MutableLiveData()
+    val movieSimilar: LiveData<Response<MovieResponse>> = _movieSimilar
+
+    private val _movieFavList: MutableLiveData<List<FavoriteMovie>> = MutableLiveData()
+    val movieFavList: LiveData<List<FavoriteMovie>> = _movieFavList
+
+    fun getMovieDetails(id: Int) =
+        viewModelScope.launch { _movieOfList.value = getMovieDetailsUseCase.exesute(id = id) }
+
+    fun getMovieTrailer(id: Int) =
+        viewModelScope.launch { _trailerResponse.value = getMovieTrailerUseCase.exesute(id = id) }
+
+    fun getSimilarMovie(id: Int) =
+        viewModelScope.launch { _movieSimilar.value = getSimilarMovieUseCase.exesute(id = id) }
 
 
-    fun getMovieDetails(id: Int) {
-        viewModelScope.launch {
-            _movieOfList.value = getMovieDetailsUseCase.exesute(id = id)
-        }
-    }
-
-    fun getMovieTrailer(id: Int) {
-        viewModelScope.launch {
-            _trailerResponse.value = getMovieTrailerUseCase.exesute(id = id)
-        }
-    }
-
-    fun getSimilarMovie(id: Int) {
-        viewModelScope.launch {
-            _movieSimilarResponse.value = getSimilarMovieUseCase.exesute(id = id)
-        }
-    }
-
-    fun addMovieFavorite(movie: MovieDetails) {
-        val favoriteMovie = movie.toFavoriteMovies()
-        viewModelScope.launch {
-            addMovieFavoriteUseCase.execute(movie = favoriteMovie)
-        }
-    }
-
-    fun deleteMovieFavorite(movie: MovieDetails) {
-        val favoriteMovie = movie.toFavoriteMovies()
-        viewModelScope.launch {
-            deleteMovieFavoriteUseCase.execute(movie = favoriteMovie)
-        }
-    }
-
-    suspend fun allFavoriteMovies(): List<FavoriteMovie> {
-        return allFavoriteMoviesUseCase.execute()
+    fun addMovieFavorite(movie: MovieDetails) =
+        viewModelScope.launch { addMovieFavoriteUseCase.execute(movie = movie.toFavoriteMovies()) }
 
 
-    }
+    fun deleteMovieFavorite(movie: MovieDetails) =
+        viewModelScope.launch { deleteMovieFavoriteUseCase.execute(movie = movie.toFavoriteMovies()) }
+
+
+    fun allFavoriteMovies() =
+        viewModelScope.launch { _movieFavList.value = allFavoriteMoviesUseCase.execute() }
 }
