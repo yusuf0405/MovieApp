@@ -1,11 +1,11 @@
 package com.example.mymovieapp.app.api
 
 import androidx.annotation.IntRange
-import com.example.mymovieapp.app.utils.Utils.Companion.DEFAULT_PAGE_SIZE
-import com.example.mymovieapp.app.utils.Utils.Companion.MAX_PAGE_SIZE
-import com.example.mymovieapp.movie_screen.domain.model.MovieResponse
-import com.example.mymovieapp.movie_details_screen.domain.models.MovieDetails
-import com.example.mymovieapp.movie_details_screen.domain.models.TrailerResponse
+import com.example.mymovieapp.app.utils.Cons.Companion.DEFAULT_PAGE_SIZE
+import com.example.mymovieapp.app.utils.Cons.Companion.MAX_PAGE_SIZE
+import com.example.mymovieapp.screen_movie_details.domain.models.MovieDetails
+import com.example.mymovieapp.screen_movie_details.domain.models.TrailerResponse
+import com.example.mymovieapp.screen_movie.domain.model.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,6 +20,8 @@ interface MovieApi {
         @Query("pageSize") @IntRange(from = 1,
             to = MAX_PAGE_SIZE.toLong()) pageSize: Int = DEFAULT_PAGE_SIZE,
     ): Response<MovieResponse>
+
+
 
     @GET("movie/top_rated")
     suspend fun getTopRatedMovie(

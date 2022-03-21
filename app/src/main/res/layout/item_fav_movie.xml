@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/cv_iv_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/cv_movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="movie"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/cv_movie_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:maxLength="4"
+            android:text="2019"
+            android:textColor="@color/red"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/delete_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/ic_baseline_delete_24" />
+
+    </LinearLayout>
+
+    <com.vaibhavlakhera.circularprogressview.CircularProgressView
+        android:id="@+id/progressView"
+        android:layout_width="54dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:animate="true"
+        app:animateDuration="600"
+        app:fillColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:progressColor="@color/green"
+        app:progressInterpolator="@android:anim/accelerate_decelerate_interpolator"
+        app:progressTextColor="@color/white"
+        app:progressTextEnabled="true"
+        app:progressTextSize="14sp"
+        app:progressTextType="percent"
+        app:progressValue="0"
+        app:progressWidth="5dp"
+        app:startAngle="270"
+        app:totalColor="@color/black"
+        app:totalValue="100"
+        app:totalWidth="8dp" />
+
+
+
+</androidx.cardview.widget.CardView>

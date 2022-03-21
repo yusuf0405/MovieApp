@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Joseph Movie</string>
     <string-array name="categories">
-        <item>Популярные</item>
-        <item>В эфире сегодня</item>
-        <item>Лучшие</item>
-        <item>Предстоящие фильмы</item>
+        <item>Popular</item>
+        <item>On the air today</item>
+        <item>The best</item>
+        <item>Upcoming Films</item>
     </string-array>
     <string-array name="favorite">
-        <item>Фильмы</item>
-        <item>Актеры</item>
+        <item>Films</item>
+        <item>The actors</item>
     </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_home">HomeActivity</string>
@@ -17,4 +17,19 @@
     <string name="title_favorite">Favorite</string>
     <string name="title_activity_bottom">BottomActivity</string>
     <string name="loading">Loading...</string>
+    <string name="movie_details_title">Title:</string>
+    <string name="movie_details_popularity">Popularity:</string>
+    <string name="movie_details_voted">Voted:</string>
+    <string name="movie_details_original_language">Original Language:</string>
+    <string name="movie_details_original_title">Original Title:</string>
+    <string name="movie_details_world_premiere">World Premiere:</string>
+    <string name="movie_details_rating">Rating:</string>
+    <string name="movie_details_description">Description:</string>
+    <string name="person_details_biography">Biography:</string>
+    <string name="person_details_name">Name:</string>
+    <string name="person_details_gender">Gender:</string>
+    <string name="person_details_place_of_birth">Place of birth:</string>
+    <string name="person_details_birthday">Birthday:</string>
+    <string name="person_details_popularity">Popularity:</string>
+    <string name="search">Search</string>
 </resources>

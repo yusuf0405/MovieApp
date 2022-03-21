@@ -19,7 +19,7 @@
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="itemIconTint">@color/item_color</item>
+        <item name="itemIconTint">@color/red</item>
         <item name="itemTextColor"> @color/item_color</item>
 
     </style>
@@ -28,11 +28,23 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/red</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="itemIconTint">@color/item_color</item>
         <item name="itemTextColor"> @color/item_color</item>
 
+    </style>
+
+    <style name="PopMen" parent="Widget.AppCompat.Spinner">
+        <!-- change menu text color-->
+        <item name="android:textColor">@android:color/black</item>
+        <!--change popup menu background color-->
+        <item name="popupMenuBackground">@color/red</item>
+        <item name="itemIconTint">@color/item_color</item>
+        <item name="itemTextColor"> @color/item_color</item>
+        <item name="android:radius">30dp</item>
+        <item name="cardCornerRadius">30dp</item>
+        <item name="cornerRadius">30dp</item>
     </style>
 </resources>

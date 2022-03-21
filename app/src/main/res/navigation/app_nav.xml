@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_movie"
-        android:name="com.example.mymovieapp.movie_screen.presentation.ui.MovieFragment"
+        android:name="com.example.mymovieapp.screen_movie.presentation.ui.MovieFragment"
         android:label="Movie"
-        tools:layout="@layout/movie_fragment" />
+        tools:layout="@layout/fragment_movie" />
     <fragment
         android:id="@+id/navigation_person"
-        android:name="com.example.mymovieapp.person_screen.presentation.ui.PersonFragment"
+        android:name="com.example.mymovieapp.screen_person.presentation.ui.PersonFragment"
         android:label="Person"
-        tools:layout="@layout/person_fragment" />
+        tools:layout="@layout/fragment_person" />
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.example.mymovieapp.favorite_screen.presentation.ui.FavoriteFragment"
+        android:name="com.example.mymovieapp.screen_favorite.presentation.ui.FavoriteFragment"
         android:label="Favorite"
-        tools:layout="@layout/favorite_movie_fragment" />
+        tools:layout="@layout/favorite_fragment" />
 </navigation>

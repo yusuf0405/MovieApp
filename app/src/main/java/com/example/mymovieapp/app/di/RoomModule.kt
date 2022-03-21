@@ -2,8 +2,8 @@ package com.example.mymovieapp.app.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.mymovieapp.favorite_screen.data.favor_movie_db.FavoriteMoviesDB
-import com.example.mymovieapp.favorite_screen.data.favor_person_db.FavoritePersonsDB
+import com.example.mymovieapp.app.room_db.movie.FavoriteMoviesDB
+import com.example.mymovieapp.app.room_db.person.FavoritePersonsDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

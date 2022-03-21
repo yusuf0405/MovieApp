@@ -1,9 +1,9 @@
-package com.example.mymovieapp.app
+package com.example.mymovieapp.app.utils
 
-import com.example.mymovieapp.favorite_screen.domain.models.FavoriteMovie
-import com.example.mymovieapp.favorite_screen.domain.models.FavoritePerson
-import com.example.mymovieapp.movie_details_screen.domain.models.MovieDetails
-import com.example.mymovieapp.person_details_screen.domain.models.PersonDetails
+import com.example.mymovieapp.screen_favorite.domain.models.FavoriteMovie
+import com.example.mymovieapp.screen_favorite.domain.models.FavoritePerson
+import com.example.mymovieapp.screen_movie_details.domain.models.MovieDetails
+import com.example.mymovieapp.screen_person_details.domain.models.PersonDetails
 
 internal fun MovieDetails.toFavoriteMovies(): FavoriteMovie {
     return FavoriteMovie(

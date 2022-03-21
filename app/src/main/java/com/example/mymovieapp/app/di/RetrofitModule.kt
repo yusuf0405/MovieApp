@@ -2,12 +2,13 @@ package com.example.mymovieapp.app.di
 
 import com.example.mymovieapp.app.api.MovieApi
 import com.example.mymovieapp.app.api.PersonApi
-import com.example.mymovieapp.app.utils.Utils.Companion.API_KEY
-import com.example.mymovieapp.app.utils.Utils.Companion.BASE_URL
+import com.example.mymovieapp.app.utils.Cons.Companion.API_KEY
+import com.example.mymovieapp.app.utils.Cons.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -29,6 +30,7 @@ class RetrofitModule {
             .build()
         val request = cain.request()
             .newBuilder()
+            .cacheControl(CacheControl.Builder().maxAge(0,TimeUnit.SECONDS).build())
             .url(url)
             .build()
         return@Interceptor cain.proceed(request)
@@ -45,12 +47,15 @@ class RetrofitModule {
     fun okHttpClient(
         httpLoggingInterceptor: HttpLoggingInterceptor,
         interceptor: Interceptor,
-    ): OkHttpClient =
-        OkHttpClient.Builder()
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .addInterceptor(httpLoggingInterceptor)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(timeout = 30, TimeUnit.SECONDS)
+            .readTimeout(timeout = 30, TimeUnit.SECONDS)
+            .writeTimeout(timeout = 30, TimeUnit.SECONDS)
             .build()
+    }
 
 
     @Provides
@@ -65,7 +70,7 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun newsApi(retrofit: Retrofit): MovieApi =
+    fun movieApi(retrofit: Retrofit): MovieApi =
         retrofit.create(MovieApi::class.java)
 
     @Provides

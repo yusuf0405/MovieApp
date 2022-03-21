@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_details_person.xml" value="0.24649532710280375" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.20179563916203505" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20222317229585293" />
-        <entry key="app/src/main/res/layout/activity_movie_details.xml" value="0.14754098360655737" />
+        <entry key="app/src/main/res/layout/activity_movie_details.xml" value="0.17330861909175163" />
         <entry key="app/src/main/res/layout/details_movie_fragment.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/details_person_fragment.xml" value="0.20184071858723956" />
         <entry key="app/src/main/res/layout/fav_movie_item.xml" value="0.27475828465982316" />
@@ -48,7 +48,8 @@
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.20179563916203505" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.20179563916203505" />
         <entry key="app/src/main/res/menu/meni_item.xml" value="0.2953125" />
-        <entry key="app/src/main/res/menu/menu_item.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu_item.xml" value="0.5733333333333334" />
+        <entry key="app/src/main/res/menu/split_menu.xml" value="0.11928174433518597" />
         <entry key="app/src/main/res/xml/spinner_item.xml" value="0.2953125" />
       </map>
     </option>

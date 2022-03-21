@@ -1,13 +1,13 @@
 package com.example.mymovieapp.app.api
 
 import androidx.annotation.IntRange
-import com.example.mymovieapp.app.utils.Utils.Companion.API_KEY
-import com.example.mymovieapp.app.utils.Utils.Companion.BASE_URL
-import com.example.mymovieapp.app.utils.Utils.Companion.DEFAULT_PAGE_SIZE
-import com.example.mymovieapp.app.utils.Utils.Companion.MAX_PAGE_SIZE
-import com.example.mymovieapp.person_details_screen.domain.models.MovieCredits
-import com.example.mymovieapp.person_details_screen.domain.models.PersonDetails
-import com.example.mymovieapp.person_screen.domain.models.PersonResponse
+import com.example.mymovieapp.app.utils.Cons.Companion.API_KEY
+import com.example.mymovieapp.app.utils.Cons.Companion.BASE_URL
+import com.example.mymovieapp.app.utils.Cons.Companion.DEFAULT_PAGE_SIZE
+import com.example.mymovieapp.app.utils.Cons.Companion.MAX_PAGE_SIZE
+import com.example.mymovieapp.screen_person_details.domain.models.MovieCredits
+import com.example.mymovieapp.screen_person_details.domain.models.PersonDetails
+import com.example.mymovieapp.screen_person.domain.models.PersonResponse
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -54,7 +54,6 @@ interface PersonApi {
             .build()
         return@Interceptor chain.proceed(request = request)
     }
-
 
 
     fun okHttpClient(
